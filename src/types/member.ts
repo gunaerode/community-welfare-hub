@@ -36,4 +36,11 @@ export interface JoinRequestData {
   description: string;
   /** Comma-separated as typed by the visitor; split into a list when building the message. */
   services: string;
+  /**
+   * Whether the visitor wants to send business photos too. A wa.me link can
+   * only pre-fill text, not attach files, so when true the generated message
+   * just tells the admin to expect photos — the visitor attaches them
+   * manually once the WhatsApp chat opens.
+   */
+  wantsToSendPhotos: boolean;
 }

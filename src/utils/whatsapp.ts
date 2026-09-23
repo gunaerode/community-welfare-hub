@@ -129,6 +129,10 @@ export function createJoinRequestUrl(data: JoinRequestData, lang: Language = "ta
         };
   const signOff =
     lang === "en" ? `Submitted via the ${associationName} website` : `${associationName} website மூலம் அனுப்பப்பட்டது`;
+  const photosNote =
+    lang === "en"
+      ? "📷 I will also send business photos in this chat."
+      : "📷 நான் Business படங்களையும் இந்த சாட்-ல் அனுப்புவேன்.";
 
   const lines = [
     `*${heading}*`,
@@ -140,6 +144,7 @@ export function createJoinRequestUrl(data: JoinRequestData, lang: Language = "ta
     `${labels.phone}: ${data.phone}`,
     data.description ? `${labels.description}: ${data.description}` : null,
     data.services ? `${labels.services}: ${data.services}` : null,
+    data.wantsToSendPhotos ? photosNote : null,
     "",
     `- ${signOff}`,
   ].filter((line): line is string => line !== null);

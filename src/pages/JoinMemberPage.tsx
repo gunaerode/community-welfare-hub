@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import { Link } from "react-router-dom";
 import PageHeader from "../components/PageHeader";
 import PageMeta from "../components/PageMeta";
 import { useLanguage } from "../context/LanguageContext";
@@ -13,6 +14,7 @@ const EMPTY_FORM: JoinRequestData = {
   phone: "",
   description: "",
   services: "",
+  wantsToSendPhotos: false,
 };
 
 type Errors = Partial<Record<"name" | "phone", string>>;
@@ -49,6 +51,13 @@ export default function JoinMemberPage() {
       <PageHeader icon="📝" title={t.joinPageTitle} subtitle={t.joinPageSubtitle} />
 
       <section className="mx-auto max-w-2xl px-4 py-10 sm:px-6">
+        <Link
+          to="/members"
+          className="mb-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary-700 hover:text-primary-900 dark:text-primary-300 dark:hover:text-white"
+        >
+          <span aria-hidden="true">←</span> {t.backToMembers}
+        </Link>
+
         <form
           onSubmit={handleSubmit}
           noValidate
@@ -169,6 +178,35 @@ export default function JoinMemberPage() {
               className={inputClasses}
             />
           </div>
+
+          <fieldset className="flex flex-col gap-2">
+            <legend className={labelClasses}>{t.joinFormPhotosLabel}</legend>
+            <div className="flex items-center gap-5">
+              <label className="flex items-center gap-2 text-sm text-primary-800 dark:text-primary-100">
+                <input
+                  type="radio"
+                  name="wantsToSendPhotos"
+                  checked={form.wantsToSendPhotos}
+                  onChange={() => setForm((current) => ({ ...current, wantsToSendPhotos: true }))}
+                  className="h-4 w-4 accent-accent-500"
+                />
+                {t.joinFormPhotosYes}
+              </label>
+              <label className="flex items-center gap-2 text-sm text-primary-800 dark:text-primary-100">
+                <input
+                  type="radio"
+                  name="wantsToSendPhotos"
+                  checked={!form.wantsToSendPhotos}
+                  onChange={() => setForm((current) => ({ ...current, wantsToSendPhotos: false }))}
+                  className="h-4 w-4 accent-accent-500"
+                />
+                {t.joinFormPhotosNo}
+              </label>
+            </div>
+            {form.wantsToSendPhotos && (
+              <p className="text-xs text-primary-500 dark:text-primary-400">{t.joinFormPhotosNote}</p>
+            )}
+          </fieldset>
 
           <button
             type="submit"

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { pick, pickList, useLanguage } from "../context/LanguageContext";
 import type { Member } from "../types/member";
 import type { CartLine } from "../types/product";
@@ -53,6 +54,14 @@ export default function MemberProfile({ member }: MemberProfileProps) {
 
   return (
     <div className="px-4 py-10 sm:px-6">
+      <div className="mx-auto max-w-3xl">
+        <Link
+          to="/members"
+          className="mb-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary-700 hover:text-primary-900 dark:text-primary-300 dark:hover:text-white"
+        >
+          <span aria-hidden="true">←</span> {t.backToMembers}
+        </Link>
+      </div>
       <article className="mx-auto max-w-3xl">
         <div className="overflow-hidden rounded-2xl border border-primary-100 bg-white shadow-sm dark:border-primary-800 dark:bg-primary-800">
           <div className="flex flex-col items-center gap-4 bg-primary-50 px-6 py-8 text-center dark:bg-primary-900 sm:flex-row sm:text-left">
@@ -175,39 +184,37 @@ export default function MemberProfile({ member }: MemberProfileProps) {
       </article>
 
       {member.products && member.products.length > 0 && (
-        <div className="mx-auto mt-6 max-w-5xl">
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_380px] lg:items-start">
-            <section
-              aria-labelledby="products-heading"
-              className="rounded-2xl border border-primary-100 bg-white p-6 shadow-sm dark:border-primary-800 dark:bg-primary-800"
-            >
-              <h2
-                id="products-heading"
-                className="text-sm font-bold uppercase tracking-wide text-primary-500 dark:text-primary-400"
-              >
-                {t.productsHeading}
-              </h2>
-              <div className="mt-3">
-                <ProductGrid
-                  products={member.products}
-                  quantities={quantities}
-                  onAdd={handleAddOrIncrement}
-                  onIncrement={handleAddOrIncrement}
-                  onDecrement={handleDecrementOrRemove}
-                />
-              </div>
-            </section>
+        <div className="mx-auto mt-6 max-w-3xl">
+          <div className="sticky top-20 z-10 mb-6">
+            <CartPanel
+              member={member}
+              cart={cartLines}
+              onIncrement={handleAddOrIncrement}
+              onDecrement={handleDecrementOrRemove}
+              onRemove={handleRemove}
+            />
+          </div>
 
-            <div className="lg:sticky lg:top-24">
-              <CartPanel
-                member={member}
-                cart={cartLines}
+          <section
+            aria-labelledby="products-heading"
+            className="rounded-2xl border border-primary-100 bg-white p-6 shadow-sm dark:border-primary-800 dark:bg-primary-800"
+          >
+            <h2
+              id="products-heading"
+              className="text-sm font-bold uppercase tracking-wide text-primary-500 dark:text-primary-400"
+            >
+              {t.productsHeading}
+            </h2>
+            <div className="mt-3">
+              <ProductGrid
+                products={member.products}
+                quantities={quantities}
+                onAdd={handleAddOrIncrement}
                 onIncrement={handleAddOrIncrement}
                 onDecrement={handleDecrementOrRemove}
-                onRemove={handleRemove}
               />
             </div>
-          </div>
+          </section>
         </div>
       )}
     </div>

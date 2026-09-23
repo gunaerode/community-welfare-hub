@@ -97,6 +97,10 @@ export interface UiStrings {
   joinFormDescriptionPlaceholder: string;
   joinFormServicesLabel: string;
   joinFormServicesPlaceholder: string;
+  joinFormPhotosLabel: string;
+  joinFormPhotosYes: string;
+  joinFormPhotosNo: string;
+  joinFormPhotosNote: string;
   joinFormRequiredNote: string;
   joinFormRequiredError: string;
   joinFormSubmit: string;
@@ -202,6 +206,11 @@ export const UI_TEXT: Record<Language, UiStrings> = {
     joinFormDescriptionPlaceholder: "உங்கள் business/சேவை பற்றி சுருக்கமாக எழுதவும்",
     joinFormServicesLabel: "சேவைகள் (காமாவால் பிரிக்கவும்)",
     joinFormServicesPlaceholder: "எ.கா. வீட்டு வயரிங், மின் பழுது பார்க்கும் பணி",
+    joinFormPhotosLabel: "📷 Business படங்களையும் அனுப்ப விரும்புகிறீர்களா?",
+    joinFormPhotosYes: "ஆம்",
+    joinFormPhotosNo: "இல்லை",
+    joinFormPhotosNote:
+      "இந்த லிங்க் வழியாக படங்களை நேரடியாக அனுப்ப முடியாது — WhatsApp சாட் திறந்தவுடன் நீங்களே Attach செய்யலாம்.",
     joinFormRequiredNote: "* தேவையான புலங்கள்",
     joinFormRequiredError: "இந்த புலம் தேவை",
     joinFormSubmit: "📤 WhatsApp மூலம் அனுப்ப",
@@ -305,6 +314,11 @@ export const UI_TEXT: Record<Language, UiStrings> = {
     joinFormDescriptionPlaceholder: "A short note about your business/service",
     joinFormServicesLabel: "Services (comma-separated)",
     joinFormServicesPlaceholder: "e.g. Home Wiring, Electrical Repairs",
+    joinFormPhotosLabel: "📷 Would you like to send business photos too?",
+    joinFormPhotosYes: "Yes",
+    joinFormPhotosNo: "No",
+    joinFormPhotosNote:
+      "Photos can't be attached directly through this link — once the WhatsApp chat opens, you can attach them yourself.",
     joinFormRequiredNote: "* Required fields",
     joinFormRequiredError: "This field is required",
     joinFormSubmit: "📤 Send via WhatsApp",
