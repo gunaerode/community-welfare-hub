@@ -52,8 +52,10 @@ export default function MemberProfile({ member }: MemberProfileProps) {
     .filter((product) => (quantities[product.id] ?? 0) > 0)
     .map((product) => ({ product, quantity: quantities[product.id] }));
 
+  const hasCartItems = cartLines.length > 0;
+
   return (
-    <div className="px-4 py-10 sm:px-6">
+    <div className={`px-4 py-10 sm:px-6 ${hasCartItems ? "pb-72 sm:pb-64" : ""}`}>
       <div className="mx-auto max-w-3xl">
         <Link
           to="/members"
@@ -184,38 +186,56 @@ export default function MemberProfile({ member }: MemberProfileProps) {
       </article>
 
       {member.products && member.products.length > 0 && (
-        <div className="mx-auto mt-6 max-w-3xl">
-          <div className="sticky top-20 z-10 mb-6">
-            <CartPanel
-              member={member}
-              cart={cartLines}
-              onIncrement={handleAddOrIncrement}
-              onDecrement={handleDecrementOrRemove}
-              onRemove={handleRemove}
-            />
+        <>
+          <div className="mx-auto mt-6 max-w-3xl">
+            <section
+              aria-labelledby="products-heading"
+              className="rounded-2xl border border-primary-100 bg-white p-6 shadow-sm dark:border-primary-800 dark:bg-primary-800"
+            >
+              <h2
+                id="products-heading"
+                className="text-sm font-bold uppercase tracking-wide text-primary-500 dark:text-primary-400"
+              >
+                {t.productsHeading}
+              </h2>
+              <div className="mt-3">
+                <ProductGrid
+                  products={member.products}
+                  quantities={quantities}
+                  onAdd={handleAddOrIncrement}
+                  onIncrement={handleAddOrIncrement}
+                  onDecrement={handleDecrementOrRemove}
+                />
+              </div>
+            </section>
+
+            {!hasCartItems && (
+              <div className="mt-6">
+                <CartPanel
+                  member={member}
+                  cart={cartLines}
+                  onIncrement={handleAddOrIncrement}
+                  onDecrement={handleDecrementOrRemove}
+                  onRemove={handleRemove}
+                />
+              </div>
+            )}
           </div>
 
-          <section
-            aria-labelledby="products-heading"
-            className="rounded-2xl border border-primary-100 bg-white p-6 shadow-sm dark:border-primary-800 dark:bg-primary-800"
-          >
-            <h2
-              id="products-heading"
-              className="text-sm font-bold uppercase tracking-wide text-primary-500 dark:text-primary-400"
-            >
-              {t.productsHeading}
-            </h2>
-            <div className="mt-3">
-              <ProductGrid
-                products={member.products}
-                quantities={quantities}
-                onAdd={handleAddOrIncrement}
-                onIncrement={handleAddOrIncrement}
-                onDecrement={handleDecrementOrRemove}
-              />
+          {hasCartItems && (
+            <div className="fixed inset-x-0 bottom-0 z-30 border-t border-primary-200 bg-white px-4 pb-4 pt-3 shadow-[0_-8px_24px_rgba(0,0,0,0.15)] dark:border-primary-700 dark:bg-primary-900 sm:px-6">
+              <div className="mx-auto max-h-[65vh] max-w-3xl overflow-y-auto">
+                <CartPanel
+                  member={member}
+                  cart={cartLines}
+                  onIncrement={handleAddOrIncrement}
+                  onDecrement={handleDecrementOrRemove}
+                  onRemove={handleRemove}
+                />
+              </div>
             </div>
-          </section>
-        </div>
+          )}
+        </>
       )}
     </div>
   );

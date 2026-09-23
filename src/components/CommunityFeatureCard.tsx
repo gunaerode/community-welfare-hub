@@ -9,9 +9,9 @@ export default function CommunityFeatureCard({ feature }: CommunityFeatureCardPr
   const { lang } = useLanguage();
 
   return (
-    <div className="flex flex-col items-start gap-3 rounded-2xl border border-primary-100 bg-white p-5 shadow-sm transition-shadow hover:shadow-md dark:border-primary-800 dark:bg-primary-800">
+    <div className="group flex flex-col items-start gap-3 rounded-2xl border border-primary-100 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-primary-800 dark:bg-primary-800">
       <span
-        className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-2xl dark:bg-primary-900"
+        className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-2xl transition-transform duration-300 group-hover:scale-110 group-hover:bg-accent-100 dark:bg-primary-900 dark:group-hover:bg-accent-900"
         aria-hidden="true"
       >
         {feature.icon}

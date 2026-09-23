@@ -33,7 +33,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-primary-100 bg-white/95 backdrop-blur dark:border-primary-800 dark:bg-primary-900/95">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 sm:px-8">
+      <div className="flex w-full items-center justify-between gap-4 px-4 py-3 sm:px-8">
         <NavLink to="/" className="flex items-center gap-2.5" onClick={() => setMenuOpen(false)}>
           <img
             src={`${import.meta.env.BASE_URL}logo.png`}

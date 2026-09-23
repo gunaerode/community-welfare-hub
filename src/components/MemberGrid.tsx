@@ -11,7 +11,7 @@ export default function MemberGrid({ members }: MemberGridProps) {
   const { t } = useLanguage();
 
   if (members.length === 0) {
-    return <EmptyState icon="🔍" title={t.noMembersFoundTitle} message={t.noMembersFoundMessage} />;
+    return <EmptyState illustration title={t.noMembersFoundTitle} message={t.noMembersFoundMessage} />;
   }
 
   return (

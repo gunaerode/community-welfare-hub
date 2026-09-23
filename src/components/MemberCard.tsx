@@ -15,7 +15,7 @@ export default function MemberCard({ member }: MemberCardProps) {
   return (
     <Link
       to={`/members/${member.id}`}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-primary-100 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg dark:border-primary-800 dark:bg-primary-800"
+      className="group flex flex-col overflow-hidden rounded-2xl border border-primary-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-primary-800 dark:bg-primary-800"
     >
       <div className="aspect-[4/3] w-full overflow-hidden bg-primary-50 dark:bg-primary-900">
         {member.image ? (

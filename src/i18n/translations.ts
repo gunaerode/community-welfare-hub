@@ -50,6 +50,11 @@ export interface UiStrings {
   generalWhatsAppCta: string;
   sendWhatsApp: string;
   addressHeading: string;
+  contactFormNameLabel: string;
+  contactFormNamePlaceholder: string;
+  contactFormMessageLabel: string;
+  contactFormMessagePlaceholder: string;
+  contactFormSubmit: string;
 
   notFoundTitle: string;
   notFoundMessage: string;
@@ -158,6 +163,11 @@ export const UI_TEXT: Record<Language, UiStrings> = {
     generalWhatsAppCta: "WhatsApp மூலம் தொடர்பு கொள்ள",
     sendWhatsApp: "📱 WhatsApp அனுப்ப",
     addressHeading: "முகவரி",
+    contactFormNameLabel: "பெயர்",
+    contactFormNamePlaceholder: "உங்கள் பெயர்",
+    contactFormMessageLabel: "உங்கள் செய்தி",
+    contactFormMessagePlaceholder: "உங்கள் கேள்வி/தேவையை எழுதவும் (விருப்பம்)",
+    contactFormSubmit: "📱 WhatsApp மூலம் அனுப்ப",
 
     notFoundTitle: "பக்கம் கிடைக்கவில்லை",
     notFoundMessage: "நீங்கள் தேடும் பக்கம் இல்லை அல்லது நகர்த்தப்பட்டுள்ளது.",
@@ -266,6 +276,11 @@ export const UI_TEXT: Record<Language, UiStrings> = {
     generalWhatsAppCta: "Contact via WhatsApp",
     sendWhatsApp: "📱 Send WhatsApp",
     addressHeading: "Address",
+    contactFormNameLabel: "Name",
+    contactFormNamePlaceholder: "Your name",
+    contactFormMessageLabel: "Your Message",
+    contactFormMessagePlaceholder: "Write your question/need (optional)",
+    contactFormSubmit: "📱 Send via WhatsApp",
 
     notFoundTitle: "Page Not Found",
     notFoundMessage: "The page you're looking for doesn't exist or has been moved.",

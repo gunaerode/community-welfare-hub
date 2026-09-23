@@ -151,3 +151,16 @@ export function createJoinRequestUrl(data: JoinRequestData, lang: Language = "ta
 
   return createWhatsAppUrl(GENERAL_WHATSAPP_NUMBER, lines.join("\n"));
 }
+
+/** Contact page query link, pre-filled with the visitor's name and (optional) message. */
+export function createContactQueryUrl(name: string, message: string, lang: Language = "ta"): string {
+  const associationName = pick(lang, SITE.nameTamil, SITE.nameEnglish);
+  const greeting =
+    lang === "en"
+      ? `Hello,\n\nI'm ${name} and I have a question about ${associationName}.`
+      : `வணக்கம்,\n\nநான் ${name}. ${associationName} தொடர்பாக ஒரு கேள்வி உள்ளது.`;
+
+  const lines = [greeting, message ? `\n${message}` : null].filter((line): line is string => line !== null);
+
+  return createWhatsAppUrl(GENERAL_WHATSAPP_NUMBER, lines.join("\n"));
+}

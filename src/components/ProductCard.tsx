@@ -15,10 +15,15 @@ export default function ProductCard({ product, quantity, onAdd, onIncrement, onD
   const description = pick(lang, product.description ?? "", product.descriptionEn);
 
   return (
-    <div className="flex flex-col overflow-hidden rounded-2xl border border-primary-100 bg-white shadow-sm dark:border-primary-800 dark:bg-primary-800">
+    <div className="group flex flex-col overflow-hidden rounded-2xl border border-primary-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-primary-800 dark:bg-primary-800">
       <div className="aspect-square w-full overflow-hidden bg-primary-50 dark:bg-primary-900">
         {product.image ? (
-          <img src={product.image} alt={name} loading="lazy" className="h-full w-full object-cover" />
+          <img
+            src={product.image}
+            alt={name}
+            loading="lazy"
+            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+          />
         ) : (
           <div className="flex h-full w-full items-center justify-center text-5xl" aria-hidden="true">
             🛍️
