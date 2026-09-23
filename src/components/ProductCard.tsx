@@ -26,19 +26,19 @@ export default function ProductCard({ product, quantity, onAdd, onIncrement, onD
         )}
       </div>
 
-      <div className="flex flex-1 flex-col gap-1.5 p-4">
-        <h3 className="text-sm font-bold text-primary-900 dark:text-white">{name}</h3>
+      <div className="flex flex-1 flex-col gap-2 p-5">
+        <h3 className="text-base font-bold text-primary-900 dark:text-white">{name}</h3>
         {description && (
-          <p className="text-xs leading-relaxed text-primary-600 dark:text-primary-300">{description}</p>
+          <p className="text-sm leading-relaxed text-primary-600 dark:text-primary-300">{description}</p>
         )}
-        <p className="mt-1 text-base font-extrabold text-primary-700 dark:text-accent-400">₹{product.price}</p>
+        <p className="mt-1 text-lg font-extrabold text-primary-700 dark:text-accent-400">₹{product.price}</p>
 
         <div className="mt-2">
           {quantity === 0 ? (
             <button
               type="button"
               onClick={onAdd}
-              className="w-full rounded-full bg-primary-700 px-4 py-2 text-xs font-bold text-white transition-colors hover:bg-primary-600"
+              className="w-full rounded-full bg-primary-700 px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-primary-600"
             >
               {t.addToCart}
             </button>
@@ -48,16 +48,16 @@ export default function ProductCard({ product, quantity, onAdd, onIncrement, onD
                 type="button"
                 onClick={onDecrement}
                 aria-label={t.decreaseQuantity}
-                className="flex h-8 w-8 items-center justify-center rounded-full text-lg font-bold text-primary-700 hover:bg-primary-50 dark:text-primary-100 dark:hover:bg-primary-700"
+                className="flex h-9 w-9 items-center justify-center rounded-full text-lg font-bold text-primary-700 hover:bg-primary-50 dark:text-primary-100 dark:hover:bg-primary-700"
               >
                 −
               </button>
-              <span className="text-sm font-bold text-primary-900 dark:text-white">{quantity}</span>
+              <span className="text-base font-bold text-primary-900 dark:text-white">{quantity}</span>
               <button
                 type="button"
                 onClick={onIncrement}
                 aria-label={t.increaseQuantity}
-                className="flex h-8 w-8 items-center justify-center rounded-full text-lg font-bold text-primary-700 hover:bg-primary-50 dark:text-primary-100 dark:hover:bg-primary-700"
+                className="flex h-9 w-9 items-center justify-center rounded-full text-lg font-bold text-primary-700 hover:bg-primary-50 dark:text-primary-100 dark:hover:bg-primary-700"
               >
                 +
               </button>

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useRef, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import { NAV_LINKS, SITE, getNavLabel } from "../constants/site";
 import { useLanguage } from "../context/LanguageContext";
 import LanguageToggle from "./LanguageToggle";
@@ -8,6 +8,10 @@ import ThemeToggle from "./ThemeToggle";
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { t } = useLanguage();
+  const location = useLocation();
+  const membersDetailsRef = useRef<HTMLDetailsElement>(null);
+
+  const isMembersSection = location.pathname.startsWith("/members");
 
   const linkClasses = ({ isActive }: { isActive: boolean }) =>
     `flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
@@ -22,6 +26,10 @@ export default function Header() {
         ? "bg-primary-700 text-white"
         : "text-primary-800 hover:bg-primary-50 dark:text-primary-100 dark:hover:bg-primary-800"
     }`;
+
+  const closeMembersDropdown = () => {
+    if (membersDetailsRef.current) membersDetailsRef.current.open = false;
+  };
 
   return (
     <header className="sticky top-0 z-40 border-b border-primary-100 bg-white/95 backdrop-blur dark:border-primary-800 dark:bg-primary-900/95">
@@ -45,14 +53,60 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <nav aria-label={t.primaryNavLabel} className="hidden md:block">
             <ul className="flex items-center gap-1">
-              {NAV_LINKS.map((link) => (
-                <li key={link.to}>
-                  <NavLink to={link.to} className={linkClasses} end={link.to === "/"}>
-                    <span aria-hidden="true">{link.icon}</span>
-                    {getNavLabel(t, link.to)}
-                  </NavLink>
-                </li>
-              ))}
+              {NAV_LINKS.map((link) =>
+                link.to === "/members" ? (
+                  <li key={link.to} className="relative">
+                    <details ref={membersDetailsRef} className="group">
+                      <summary
+                        className={`flex cursor-pointer list-none items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition-colors [&::-webkit-details-marker]:hidden ${
+                          isMembersSection
+                            ? "bg-primary-700 text-white"
+                            : "text-primary-800 hover:bg-primary-50 dark:text-primary-100 dark:hover:bg-primary-800"
+                        }`}
+                      >
+                        <span aria-hidden="true">{link.icon}</span>
+                        {getNavLabel(t, link.to)}
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="h-3.5 w-3.5 transition-transform group-open:rotate-180"
+                          aria-hidden="true"
+                        >
+                          <path d="M6 9l6 6 6-6" />
+                        </svg>
+                      </summary>
+                      <div className="absolute left-0 top-full z-10 mt-1 w-52 overflow-hidden rounded-xl border border-primary-100 bg-white py-1 shadow-lg dark:border-primary-700 dark:bg-primary-800">
+                        <NavLink
+                          to="/members"
+                          end
+                          onClick={closeMembersDropdown}
+                          className="flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-primary-800 hover:bg-primary-50 dark:text-primary-100 dark:hover:bg-primary-700"
+                        >
+                          <span aria-hidden="true">👨‍👩‍👧‍👦</span> {t.navViewMembers}
+                        </NavLink>
+                        <NavLink
+                          to="/members/join"
+                          onClick={closeMembersDropdown}
+                          className="flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-primary-800 hover:bg-primary-50 dark:text-primary-100 dark:hover:bg-primary-700"
+                        >
+                          <span aria-hidden="true">📝</span> {t.navAddDetails}
+                        </NavLink>
+                      </div>
+                    </details>
+                  </li>
+                ) : (
+                  <li key={link.to}>
+                    <NavLink to={link.to} className={linkClasses} end={link.to === "/"}>
+                      <span aria-hidden="true">{link.icon}</span>
+                      {getNavLabel(t, link.to)}
+                    </NavLink>
+                  </li>
+                ),
+              )}
             </ul>
           </nav>
 
@@ -107,6 +161,21 @@ export default function Header() {
                   <span aria-hidden="true">{link.icon}</span>
                   {getNavLabel(t, link.to)}
                 </NavLink>
+                {link.to === "/members" && (
+                  <NavLink
+                    to="/members/join"
+                    className={({ isActive }) =>
+                      `ml-6 mt-0.5 flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors ${
+                        isActive
+                          ? "bg-primary-700 text-white"
+                          : "text-primary-600 hover:bg-primary-50 dark:text-primary-300 dark:hover:bg-primary-800"
+                      }`
+                    }
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    <span aria-hidden="true">📝</span> {t.navAddDetails}
+                  </NavLink>
+                )}
               </li>
             ))}
           </ul>

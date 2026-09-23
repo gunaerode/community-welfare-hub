@@ -1,6 +1,6 @@
 import { GENERAL_WHATSAPP_NUMBER, SITE } from "../constants/site";
 import { pick, type Language } from "../context/LanguageContext";
-import type { Member } from "../types/member";
+import type { JoinRequestData, Member } from "../types/member";
 import type { CartLine } from "../types/product";
 
 /**
@@ -96,4 +96,53 @@ export function createCartOrderUrl(member: Member, cart: CartLine[], lang: Langu
   ];
 
   return createWhatsAppUrl(member.phone ?? GENERAL_WHATSAPP_NUMBER, lines.join("\n"));
+}
+
+/**
+ * Sends a prospective/updated member's details to the association admin via
+ * WhatsApp. There's no backend to persist this directly into the member
+ * directory — the admin reviews the message and adds/updates the entry in
+ * src/data/members.ts.
+ */
+export function createJoinRequestUrl(data: JoinRequestData, lang: Language = "ta"): string {
+  const associationName = pick(lang, SITE.nameTamil, SITE.nameEnglish);
+  const heading = lang === "en" ? "New Member Details" : "புதிய உறுப்பினர் விவரங்கள்";
+  const labels =
+    lang === "en"
+      ? {
+          name: "Name",
+          business: "Business Name",
+          category: "Category",
+          location: "Location",
+          phone: "Contact Number",
+          description: "Description",
+          services: "Services",
+        }
+      : {
+          name: "பெயர்",
+          business: "Business பெயர்",
+          category: "வகை",
+          location: "இடம்",
+          phone: "தொடர்பு எண்",
+          description: "விவரம்",
+          services: "சேவைகள்",
+        };
+  const signOff =
+    lang === "en" ? `Submitted via the ${associationName} website` : `${associationName} website மூலம் அனுப்பப்பட்டது`;
+
+  const lines = [
+    `*${heading}*`,
+    "",
+    `${labels.name}: ${data.name}`,
+    data.businessName ? `${labels.business}: ${data.businessName}` : null,
+    data.category ? `${labels.category}: ${data.category}` : null,
+    data.location ? `${labels.location}: ${data.location}` : null,
+    `${labels.phone}: ${data.phone}`,
+    data.description ? `${labels.description}: ${data.description}` : null,
+    data.services ? `${labels.services}: ${data.services}` : null,
+    "",
+    `- ${signOff}`,
+  ].filter((line): line is string => line !== null);
+
+  return createWhatsAppUrl(GENERAL_WHATSAPP_NUMBER, lines.join("\n"));
 }

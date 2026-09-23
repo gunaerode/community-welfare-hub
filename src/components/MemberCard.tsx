@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { pick, useLanguage } from "../context/LanguageContext";
 import type { Member } from "../types/member";
+import AvatarPlaceholder from "./AvatarPlaceholder";
 
 interface MemberCardProps {
   member: Member;
@@ -25,9 +26,7 @@ export default function MemberCard({ member }: MemberCardProps) {
             className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center text-6xl" aria-hidden="true">
-            👤
-          </div>
+          <AvatarPlaceholder />
         )}
       </div>
 

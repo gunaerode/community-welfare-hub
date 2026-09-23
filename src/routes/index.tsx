@@ -2,6 +2,7 @@ import { createHashRouter } from "react-router-dom";
 import Layout from "../components/Layout";
 import ContactPage from "../pages/ContactPage";
 import HomePage from "../pages/HomePage";
+import JoinMemberPage from "../pages/JoinMemberPage";
 import MemberProfilePage from "../pages/MemberProfilePage";
 import MembersPage from "../pages/MembersPage";
 import NotFoundPage from "../pages/NotFoundPage";
@@ -17,6 +18,7 @@ export const router = createHashRouter([
     children: [
       { path: "/", element: <HomePage /> },
       { path: "/members", element: <MembersPage /> },
+      { path: "/members/join", element: <JoinMemberPage /> },
       { path: "/members/:memberId", element: <MemberProfilePage /> },
       { path: "/rules", element: <RulesPage /> },
       { path: "/contact", element: <ContactPage /> },

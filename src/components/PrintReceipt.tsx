@@ -31,18 +31,19 @@ export default function PrintReceipt({ member, cart }: PrintReceiptProps) {
       <table className="mt-4 w-full border-collapse text-sm">
         <thead>
           <tr className="border-b border-black text-left">
-            <th className="py-1">{pick(lang, "பொருள்", "Item")}</th>
-            <th className="py-1 text-center">{pick(lang, "எண்ணிக்கை", "Qty")}</th>
-            <th className="py-1 text-right">{pick(lang, "விலை", "Price")}</th>
-            <th className="py-1 text-right">{pick(lang, "மொத்தம்", "Amount")}</th>
+            <th className="py-1">{t.cartItemColumn}</th>
+            <th className="py-1 text-center">{t.cartQtyColumn}</th>
+            <th className="py-1 text-right">{t.cartAmountColumn}</th>
           </tr>
         </thead>
         <tbody>
           {cart.map((line) => (
             <tr key={line.product.id} className="border-b border-gray-300">
-              <td className="py-1.5">{pick(lang, line.product.name, line.product.nameEn)}</td>
+              <td className="py-1.5">
+                {pick(lang, line.product.name, line.product.nameEn)}
+                <span className="ml-1 text-xs text-gray-600">(₹{line.product.price})</span>
+              </td>
               <td className="py-1.5 text-center">{line.quantity}</td>
-              <td className="py-1.5 text-right">₹{line.product.price}</td>
               <td className="py-1.5 text-right">₹{line.product.price * line.quantity}</td>
             </tr>
           ))}

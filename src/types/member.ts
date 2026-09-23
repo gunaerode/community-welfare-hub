@@ -25,3 +25,15 @@ export interface Member {
    */
   products?: Product[];
 }
+
+/** Data collected from the "Add My Details" form, submitted to the admin via WhatsApp. */
+export interface JoinRequestData {
+  name: string;
+  businessName: string;
+  category: string;
+  location: string;
+  phone: string;
+  description: string;
+  /** Comma-separated as typed by the visitor; split into a list when building the message. */
+  services: string;
+}

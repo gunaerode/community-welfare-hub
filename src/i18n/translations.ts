@@ -74,6 +74,32 @@ export interface UiStrings {
   printOrder: string;
   orderSummaryTitle: string;
   orderDateLabel: string;
+  cartItemColumn: string;
+  cartQtyColumn: string;
+  cartAmountColumn: string;
+
+  navViewMembers: string;
+  navAddDetails: string;
+
+  joinPageTitle: string;
+  joinPageSubtitle: string;
+  joinFormNameLabel: string;
+  joinFormNamePlaceholder: string;
+  joinFormBusinessLabel: string;
+  joinFormBusinessPlaceholder: string;
+  joinFormCategoryLabel: string;
+  joinFormCategoryPlaceholder: string;
+  joinFormLocationLabel: string;
+  joinFormLocationPlaceholder: string;
+  joinFormPhoneLabel: string;
+  joinFormPhonePlaceholder: string;
+  joinFormDescriptionLabel: string;
+  joinFormDescriptionPlaceholder: string;
+  joinFormServicesLabel: string;
+  joinFormServicesPlaceholder: string;
+  joinFormRequiredNote: string;
+  joinFormRequiredError: string;
+  joinFormSubmit: string;
 }
 
 export const UI_TEXT: Record<Language, UiStrings> = {
@@ -152,6 +178,33 @@ export const UI_TEXT: Record<Language, UiStrings> = {
     printOrder: "🖨️ ஆர்டரை பிரிண்ட் செய்ய",
     orderSummaryTitle: "ஆர்டர் விவரம்",
     orderDateLabel: "தேதி",
+    cartItemColumn: "பொருள்",
+    cartQtyColumn: "எண்ணிக்கை",
+    cartAmountColumn: "மொத்தம்",
+
+    navViewMembers: "உறுப்பினர்களைப் பார்க்க",
+    navAddDetails: "எனது விவரங்களை சேர்",
+
+    joinPageTitle: "எனது விவரங்களை சேர்",
+    joinPageSubtitle:
+      "படிவத்தை நிரப்பி சமர்ப்பிக்கவும் — உங்கள் விவரங்கள் WhatsApp வழியாக நிர்வாகியிடம் அனுப்பப்படும், அவர்கள் பரிசீலித்து Directory-ல் சேர்ப்பார்.",
+    joinFormNameLabel: "பெயர்",
+    joinFormNamePlaceholder: "உங்கள் முழு பெயர்",
+    joinFormBusinessLabel: "Business பெயர்",
+    joinFormBusinessPlaceholder: "எ.கா. ஸ்ரீ விநாயக எலக்ட்ரிக்கல்ஸ்",
+    joinFormCategoryLabel: "வகை",
+    joinFormCategoryPlaceholder: "எ.கா. மின் பணிகள், தையல், கேட்டரிங்",
+    joinFormLocationLabel: "இடம்",
+    joinFormLocationPlaceholder: "எ.கா. அந்தியூர்",
+    joinFormPhoneLabel: "தொடர்பு எண்",
+    joinFormPhonePlaceholder: "10-இலக்க மொபைல் எண்",
+    joinFormDescriptionLabel: "விவரம்",
+    joinFormDescriptionPlaceholder: "உங்கள் business/சேவை பற்றி சுருக்கமாக எழுதவும்",
+    joinFormServicesLabel: "சேவைகள் (காமாவால் பிரிக்கவும்)",
+    joinFormServicesPlaceholder: "எ.கா. வீட்டு வயரிங், மின் பழுது பார்க்கும் பணி",
+    joinFormRequiredNote: "* தேவையான புலங்கள்",
+    joinFormRequiredError: "இந்த புலம் தேவை",
+    joinFormSubmit: "📤 WhatsApp மூலம் அனுப்ப",
   },
   en: {
     navHome: "Home",
@@ -228,5 +281,32 @@ export const UI_TEXT: Record<Language, UiStrings> = {
     printOrder: "🖨️ Print Order",
     orderSummaryTitle: "Order Summary",
     orderDateLabel: "Date",
+    cartItemColumn: "Item",
+    cartQtyColumn: "Qty",
+    cartAmountColumn: "Amount",
+
+    navViewMembers: "View Members",
+    navAddDetails: "Add My Details",
+
+    joinPageTitle: "Add My Details",
+    joinPageSubtitle:
+      "Fill in the form and submit — your details will be sent to our Admin via WhatsApp, who will review and add you to the directory.",
+    joinFormNameLabel: "Name",
+    joinFormNamePlaceholder: "Your full name",
+    joinFormBusinessLabel: "Business Name",
+    joinFormBusinessPlaceholder: "e.g. Sri Vinayaga Electricals",
+    joinFormCategoryLabel: "Category",
+    joinFormCategoryPlaceholder: "e.g. Electrical Services, Tailoring, Catering",
+    joinFormLocationLabel: "Location",
+    joinFormLocationPlaceholder: "e.g. Anthiyur",
+    joinFormPhoneLabel: "Contact Number",
+    joinFormPhonePlaceholder: "10-digit mobile number",
+    joinFormDescriptionLabel: "Description",
+    joinFormDescriptionPlaceholder: "A short note about your business/service",
+    joinFormServicesLabel: "Services (comma-separated)",
+    joinFormServicesPlaceholder: "e.g. Home Wiring, Electrical Repairs",
+    joinFormRequiredNote: "* Required fields",
+    joinFormRequiredError: "This field is required",
+    joinFormSubmit: "📤 Send via WhatsApp",
   },
 };
