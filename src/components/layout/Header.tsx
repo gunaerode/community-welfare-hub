@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { NAV_LINKS, SITE, getNavLabel } from "../../constants/site";
 import { useLanguage } from "../../context/LanguageContext";
@@ -30,6 +30,24 @@ export default function Header() {
   const closeMembersDropdown = () => {
     if (membersDetailsRef.current) membersDetailsRef.current.open = false;
   };
+
+  useEffect(() => {
+    const handlePointerDown = (event: MouseEvent | TouchEvent) => {
+      const details = membersDetailsRef.current;
+      if (details?.open && !details.contains(event.target as Node)) details.open = false;
+    };
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closeMembersDropdown();
+    };
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("touchstart", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("touchstart", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   return (
     <header className="sticky top-0 z-40 border-b border-primary-100 bg-white/95 backdrop-blur dark:border-primary-800 dark:bg-primary-900/95">
