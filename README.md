@@ -2,6 +2,10 @@
 
 **சின்ன வீர சங்கிலி உறவினர் நல சங்கம்** — Community Welfare Association
 
+> **License:** All Rights Reserved — see [LICENSE](LICENSE). This repository
+> is public for transparency only; copying, reuse, or redistribution of the
+> code or content is not permitted without written permission.
+
 A modern, mobile-first static website for a Tamil family/community welfare
 association: home/about page, rules & regulations, a searchable member
 business directory with individual profiles, and a contact page — all with
