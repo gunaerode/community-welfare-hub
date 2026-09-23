@@ -1,18 +1,19 @@
 import { SITE } from "../constants/site";
+import { pick, useLanguage } from "../context/LanguageContext";
 import { COMMUNITY_FEATURES } from "../data/community";
 import CommunityFeatureCard from "./CommunityFeatureCard";
 
 export default function AboutCommunity() {
+  const { lang, t } = useLanguage();
+
   return (
     <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6" aria-labelledby="about-heading">
       <div className="mx-auto max-w-2xl text-center">
-        <h2 id="about-heading" className="text-2xl font-extrabold text-primary-900 sm:text-3xl">
-          எங்கள் சமூகம் பற்றி
+        <h2 id="about-heading" className="text-2xl font-extrabold text-primary-900 dark:text-white sm:text-3xl">
+          {t.aboutHeading}
         </h2>
-        <p className="mt-3 text-sm leading-relaxed text-primary-700 sm:text-base">
-          <strong>{SITE.nameTamil}</strong> என்பது உறவினர்களிடையே ஒற்றுமை, நிதி உதவி, அவசர
-          ஆதரவு, கல்வி மற்றும் மருத்துவ உதவி, சமூக வளர்ச்சி மற்றும் பரஸ்பர உதவியை
-          ஊக்குவிக்கும் நோக்கில் உருவாக்கப்பட்ட ஒரு சமூக முன்முயற்சி.
+        <p className="mt-3 text-sm leading-relaxed text-primary-700 dark:text-primary-200 sm:text-base">
+          {pick(lang, SITE.aboutParagraph, SITE.aboutParagraphEn)}
         </p>
       </div>
 

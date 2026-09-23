@@ -14,8 +14,8 @@ export default function NotFound({ title, message, backTo, backLabel }: NotFound
       <span className="text-5xl" aria-hidden="true">
         🙁
       </span>
-      <h1 className="text-2xl font-extrabold text-primary-900">{title}</h1>
-      <p className="text-sm text-primary-600">{message}</p>
+      <h1 className="text-2xl font-extrabold text-primary-900 dark:text-white">{title}</h1>
+      <p className="text-sm text-primary-600 dark:text-primary-300">{message}</p>
       <Link
         to={backTo}
         className="mt-2 rounded-full bg-primary-700 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-600"

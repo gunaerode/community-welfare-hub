@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { SITE_NOTICE, SITE_NOTICE_STORAGE_KEY } from "../constants/site";
+import { pick, useLanguage } from "../context/LanguageContext";
 
 function wasDismissed(): boolean {
   if (!SITE_NOTICE.dismissible) return false;
@@ -19,6 +20,7 @@ function wasDismissed(): boolean {
  */
 export default function SiteNoticeBanner() {
   const [dismissed, setDismissed] = useState(wasDismissed);
+  const { lang, t } = useLanguage();
 
   if (!SITE_NOTICE.enabled || (SITE_NOTICE.dismissible && dismissed)) {
     return null;
@@ -36,12 +38,12 @@ export default function SiteNoticeBanner() {
   return (
     <div role="status" className="bg-accent-500 px-4 py-2 text-center text-sm font-semibold text-accent-900">
       <div className="mx-auto flex max-w-6xl items-center justify-center gap-3">
-        <span>{SITE_NOTICE.message}</span>
+        <span>{pick(lang, SITE_NOTICE.message, SITE_NOTICE.messageEn)}</span>
         {SITE_NOTICE.dismissible && (
           <button
             type="button"
             onClick={handleDismiss}
-            aria-label="அறிவிப்பை மூடு"
+            aria-label={t.closeNotice}
             className="shrink-0 rounded-full px-1.5 text-accent-900/70 hover:text-accent-900 focus-visible:text-accent-900"
           >
             ✕

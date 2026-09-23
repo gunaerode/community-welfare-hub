@@ -1,3 +1,4 @@
+import { useLanguage } from "../context/LanguageContext";
 import type { Member } from "../types/member";
 import EmptyState from "./EmptyState";
 import MemberCard from "./MemberCard";
@@ -7,14 +8,10 @@ interface MemberGridProps {
 }
 
 export default function MemberGrid({ members }: MemberGridProps) {
+  const { t } = useLanguage();
+
   if (members.length === 0) {
-    return (
-      <EmptyState
-        icon="🔍"
-        title="உறுப்பினர்கள் யாரும் கிடைக்கவில்லை"
-        message="வேறு தேடல் அல்லது வடிகட்டியை முயற்சிக்கவும்."
-      />
-    );
+    return <EmptyState icon="🔍" title={t.noMembersFoundTitle} message={t.noMembersFoundMessage} />;
   }
 
   return (

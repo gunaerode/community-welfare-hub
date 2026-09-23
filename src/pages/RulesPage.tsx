@@ -1,20 +1,16 @@
 import PageHeader from "../components/PageHeader";
 import PageMeta from "../components/PageMeta";
 import RulesSection from "../components/RulesSection";
+import { useLanguage } from "../context/LanguageContext";
 import { RULES_SECTIONS } from "../data/community";
 
 export default function RulesPage() {
+  const { t } = useLanguage();
+
   return (
     <>
-      <PageMeta
-        title="விதிமுறைகள்"
-        description="சங்கத்தின் மாதாந்திர சந்தா, உதவி/கடன் வரம்பு மற்றும் பிற விதிமுறைகள்."
-      />
-      <PageHeader
-        icon="📜"
-        title="விதிமுறைகள் & நடைமுறைகள்"
-        subtitle="அனைத்து உறுப்பினர்களும் கீழ்கண்ட விதிமுறைகளை கடைபிடிக்குமாறு கேட்டுக்கொள்கிறோம்."
-      />
+      <PageMeta title={t.rulesPageTitle} description={t.rulesPageSubtitle} />
+      <PageHeader icon="📜" title={t.rulesPageTitle} subtitle={t.rulesPageSubtitle} />
 
       <section className="mx-auto max-w-5xl px-4 py-10 sm:px-6">
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">

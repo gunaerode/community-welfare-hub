@@ -2,15 +2,22 @@ export interface CommunityFeature {
   id: string;
   icon: string;
   title: string;
+  titleEn?: string;
   description: string;
+  descriptionEn?: string;
 }
 
 export interface AnnouncementContent {
   title: string;
+  titleEn?: string;
   intro: string;
+  introEn?: string;
   points: string[];
+  pointsEn?: string[];
   note: string;
+  noteEn?: string;
   primaryButtonText: string;
+  primaryButtonTextEn?: string;
   secondaryButtonText: string;
 }
 
@@ -24,7 +31,9 @@ export interface RuleSection {
   id: string;
   icon: string;
   title: string;
+  titleEn?: string;
   body: string[];
+  bodyEn?: string[];
   isFuturePlan?: boolean;
 }
 
@@ -38,4 +47,5 @@ export interface SiteNoticeConfig {
    */
   dismissible: boolean;
   message: string;
+  messageEn?: string;
 }

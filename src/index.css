@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Class-based dark mode: toggled manually via ThemeContext, not tied to OS preference. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: "Noto Sans Tamil", "Poppins", "Inter", system-ui, sans-serif;
 
@@ -50,11 +53,22 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 body {
   background-color: #f8faf9;
   color: #0d332b;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+html.dark body {
+  background-color: #0a2620;
+  color: #eef7f4;
 }
 
 /* visible focus ring for keyboard users */
