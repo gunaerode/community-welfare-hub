@@ -7,7 +7,7 @@ export const SITE = {
 } as const;
 
 /** General enquiry WhatsApp number — replace with the real association number */
-export const GENERAL_WHATSAPP_NUMBER = "919876543210";
+export const GENERAL_WHATSAPP_NUMBER = "918883702745";
 
 export const NAV_LINKS = [
   { to: "/", label: "Home", icon: "🏠" },

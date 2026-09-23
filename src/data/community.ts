@@ -140,8 +140,8 @@ export const RULES_SECTIONS: RuleSection[] = [
 ];
 
 export const CONTACT_PEOPLE: ContactPerson[] = [
-  { role: "Admin", name: "செல்வம்", phone: "919876543210" },
-  { role: "Treasurer", name: "முருகன்", phone: "919876543211" },
+  { role: "Admin", name: "செல்வம்", phone: "918883702745" },
+  { role: "Treasurer", name: "முருகன்", phone: "918883702745" },
 ];
 
 export const ASSOCIATION_ADDRESS = "அந்தியூர், ஈரோடு மாவட்டம், தமிழ்நாடு";

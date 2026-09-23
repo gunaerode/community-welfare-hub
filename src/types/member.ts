@@ -4,7 +4,7 @@ export interface Member {
   businessName?: string;
   category?: string;
   location?: string;
-  /** Phone number in international format without "+", e.g. "919876543210" */
+  /** Phone number in international format without "+", e.g. "918883702745" */
   phone?: string;
   image?: string;
   description?: string;
