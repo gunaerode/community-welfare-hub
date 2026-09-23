@@ -1,6 +1,6 @@
-import PageHeader from "../components/PageHeader";
-import PageMeta from "../components/PageMeta";
-import RulesSection from "../components/RulesSection";
+import PageHeader from "../components/common/PageHeader";
+import PageMeta from "../components/common/PageMeta";
+import RulesSection from "../components/rules/RulesSection";
 import { useLanguage } from "../context/LanguageContext";
 import { RULES_SECTIONS } from "../data/community";
 

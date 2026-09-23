@@ -1,5 +1,5 @@
-import NotFound from "../components/NotFound";
-import PageMeta from "../components/PageMeta";
+import NotFound from "../components/common/NotFound";
+import PageMeta from "../components/common/PageMeta";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function NotFoundPage() {

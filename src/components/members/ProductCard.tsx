@@ -1,5 +1,5 @@
-import { pick, useLanguage } from "../context/LanguageContext";
-import type { Product } from "../types/product";
+import { pick, useLanguage } from "../../context/LanguageContext";
+import type { Product } from "../../types/product";
 
 interface ProductCardProps {
   product: Product;

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ANNOUNCEMENT_REAPPEAR_DAYS, ANNOUNCEMENT_STORAGE_KEY } from "../constants/site";
-import { pick, pickList, useLanguage } from "../context/LanguageContext";
-import { ANNOUNCEMENT } from "../data/community";
+import { ANNOUNCEMENT_REAPPEAR_DAYS, ANNOUNCEMENT_STORAGE_KEY } from "../../constants/site";
+import { pick, pickList, useLanguage } from "../../context/LanguageContext";
+import { ANNOUNCEMENT } from "../../data/community";
 
 const REAPPEAR_INTERVAL_MS = ANNOUNCEMENT_REAPPEAR_DAYS * 24 * 60 * 60 * 1000;
 

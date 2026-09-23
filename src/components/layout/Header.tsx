@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { NAV_LINKS, SITE, getNavLabel } from "../constants/site";
-import { useLanguage } from "../context/LanguageContext";
+import { NAV_LINKS, SITE, getNavLabel } from "../../constants/site";
+import { useLanguage } from "../../context/LanguageContext";
 import LanguageToggle from "./LanguageToggle";
 import ThemeToggle from "./ThemeToggle";
 

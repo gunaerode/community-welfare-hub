@@ -1,9 +1,9 @@
 import { useMemo, useState } from "react";
-import MemberFilters, { ALL_VALUE } from "../components/MemberFilters";
-import MemberGrid from "../components/MemberGrid";
-import MemberSearch from "../components/MemberSearch";
-import PageHeader from "../components/PageHeader";
-import PageMeta from "../components/PageMeta";
+import MemberFilters, { ALL_VALUE } from "../components/members/MemberFilters";
+import MemberGrid from "../components/members/MemberGrid";
+import MemberSearch from "../components/members/MemberSearch";
+import PageHeader from "../components/common/PageHeader";
+import PageMeta from "../components/common/PageMeta";
 import { pick, useLanguage } from "../context/LanguageContext";
 import { MEMBERS } from "../data/members";
 

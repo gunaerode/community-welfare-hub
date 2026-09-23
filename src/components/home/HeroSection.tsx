@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { SITE } from "../constants/site";
-import { pick, useLanguage } from "../context/LanguageContext";
-import { createGeneralWhatsAppUrl } from "../utils/whatsapp";
+import { SITE } from "../../constants/site";
+import { pick, useLanguage } from "../../context/LanguageContext";
+import { createGeneralWhatsAppUrl } from "../../utils/whatsapp";
 
 export default function HeroSection() {
   const { lang, t } = useLanguage();

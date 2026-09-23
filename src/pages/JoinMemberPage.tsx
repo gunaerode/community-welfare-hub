@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
-import PageHeader from "../components/PageHeader";
-import PageMeta from "../components/PageMeta";
+import PageHeader from "../components/common/PageHeader";
+import PageMeta from "../components/common/PageMeta";
 import { useLanguage } from "../context/LanguageContext";
 import type { JoinRequestData } from "../types/member";
 import { createJoinRequestUrl } from "../utils/whatsapp";

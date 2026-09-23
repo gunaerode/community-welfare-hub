@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { pick, pickList, useLanguage } from "../context/LanguageContext";
-import type { Member } from "../types/member";
-import type { CartLine } from "../types/product";
-import AvatarPlaceholder from "./AvatarPlaceholder";
+import { pick, pickList, useLanguage } from "../../context/LanguageContext";
+import type { Member } from "../../types/member";
+import type { CartLine } from "../../types/product";
+import AvatarPlaceholder from "../common/AvatarPlaceholder";
 import CartPanel from "./CartPanel";
 import FixedCartBar from "./FixedCartBar";
 import ProductGrid from "./ProductGrid";
-import WhatsAppCTA from "./WhatsAppCTA";
-import { createMemberEnquiryUrl, createShareMemberUrl } from "../utils/whatsapp";
+import WhatsAppCTA from "../common/WhatsAppCTA";
+import { createMemberEnquiryUrl, createShareMemberUrl } from "../../utils/whatsapp";
 
 interface MemberProfileProps {
   member: Member;
@@ -187,43 +187,29 @@ export default function MemberProfile({ member }: MemberProfileProps) {
       </article>
 
       {member.products && member.products.length > 0 && (
-        <>
-          <div className="mx-auto mt-6 max-w-3xl">
-            <section
-              aria-labelledby="products-heading"
-              className="rounded-2xl border border-primary-100 bg-white p-6 shadow-sm dark:border-primary-800 dark:bg-primary-800"
+        <div className="mx-auto mt-6 max-w-3xl">
+          <section
+            aria-labelledby="products-heading"
+            className="rounded-2xl border border-primary-100 bg-white p-6 shadow-sm dark:border-primary-800 dark:bg-primary-800"
+          >
+            <h2
+              id="products-heading"
+              className="text-sm font-bold uppercase tracking-wide text-primary-500 dark:text-primary-400"
             >
-              <h2
-                id="products-heading"
-                className="text-sm font-bold uppercase tracking-wide text-primary-500 dark:text-primary-400"
-              >
-                {t.productsHeading}
-              </h2>
-              <div className="mt-3">
-                <ProductGrid
-                  products={member.products}
-                  quantities={quantities}
-                  onAdd={handleAddOrIncrement}
-                  onIncrement={handleAddOrIncrement}
-                  onDecrement={handleDecrementOrRemove}
-                />
-              </div>
-            </section>
+              {t.productsHeading}
+            </h2>
+            <div className="mt-3">
+              <ProductGrid
+                products={member.products}
+                quantities={quantities}
+                onAdd={handleAddOrIncrement}
+                onIncrement={handleAddOrIncrement}
+                onDecrement={handleDecrementOrRemove}
+              />
+            </div>
+          </section>
 
-            {!hasCartItems && (
-              <div className="mt-6">
-                <CartPanel
-                  member={member}
-                  cart={cartLines}
-                  onIncrement={handleAddOrIncrement}
-                  onDecrement={handleDecrementOrRemove}
-                  onRemove={handleRemove}
-                />
-              </div>
-            )}
-          </div>
-
-          {hasCartItems && (
+          {hasCartItems ? (
             <FixedCartBar
               member={member}
               cart={cartLines}
@@ -231,8 +217,18 @@ export default function MemberProfile({ member }: MemberProfileProps) {
               onDecrement={handleDecrementOrRemove}
               onRemove={handleRemove}
             />
+          ) : (
+            <div className="mt-6">
+              <CartPanel
+                member={member}
+                cart={cartLines}
+                onIncrement={handleAddOrIncrement}
+                onDecrement={handleDecrementOrRemove}
+                onRemove={handleRemove}
+              />
+            </div>
           )}
-        </>
+        </div>
       )}
     </div>
   );

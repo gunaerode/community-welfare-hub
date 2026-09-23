@@ -1,6 +1,6 @@
-import { useLanguage } from "../context/LanguageContext";
-import type { Member } from "../types/member";
-import EmptyState from "./EmptyState";
+import { useLanguage } from "../../context/LanguageContext";
+import type { Member } from "../../types/member";
+import EmptyState from "../common/EmptyState";
 import MemberCard from "./MemberCard";
 
 interface MemberGridProps {

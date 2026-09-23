@@ -1,5 +1,5 @@
-import { pick, useLanguage } from "../context/LanguageContext";
-import type { CommunityFeature } from "../types/community";
+import { pick, useLanguage } from "../../context/LanguageContext";
+import type { CommunityFeature } from "../../types/community";
 
 interface CommunityFeatureCardProps {
   feature: CommunityFeature;

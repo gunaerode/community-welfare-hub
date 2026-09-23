@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { NAV_LINKS, SITE, getNavLabel } from "../constants/site";
-import { pick, useLanguage } from "../context/LanguageContext";
+import { NAV_LINKS, SITE, getNavLabel } from "../../constants/site";
+import { pick, useLanguage } from "../../context/LanguageContext";
 
 export default function Footer() {
   const year = new Date().getFullYear();

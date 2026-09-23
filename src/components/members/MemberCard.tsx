@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { pick, useLanguage } from "../context/LanguageContext";
-import type { Member } from "../types/member";
-import AvatarPlaceholder from "./AvatarPlaceholder";
+import { pick, useLanguage } from "../../context/LanguageContext";
+import type { Member } from "../../types/member";
+import AvatarPlaceholder from "../common/AvatarPlaceholder";
 
 interface MemberCardProps {
   member: Member;

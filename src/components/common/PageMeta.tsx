@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { SITE } from "../constants/site";
+import { SITE } from "../../constants/site";
 
 interface PageMetaProps {
   title: string;

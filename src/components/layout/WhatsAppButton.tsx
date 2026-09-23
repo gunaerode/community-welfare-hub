@@ -1,5 +1,5 @@
-import { useLanguage } from "../context/LanguageContext";
-import { createGeneralWhatsAppUrl } from "../utils/whatsapp";
+import { useLanguage } from "../../context/LanguageContext";
+import { createGeneralWhatsAppUrl } from "../../utils/whatsapp";
 
 /** Floating WhatsApp button shown globally, bottom-right, for general enquiries. */
 export default function WhatsAppButton() {

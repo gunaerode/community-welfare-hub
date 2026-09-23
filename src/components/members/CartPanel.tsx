@@ -1,7 +1,7 @@
-import { pick, useLanguage } from "../context/LanguageContext";
-import type { Member } from "../types/member";
-import type { CartLine } from "../types/product";
-import { createCartOrderUrl } from "../utils/whatsapp";
+import { pick, useLanguage } from "../../context/LanguageContext";
+import type { Member } from "../../types/member";
+import type { CartLine } from "../../types/product";
+import { createCartOrderUrl } from "../../utils/whatsapp";
 import PrintReceipt from "./PrintReceipt";
 
 interface CartPanelProps {

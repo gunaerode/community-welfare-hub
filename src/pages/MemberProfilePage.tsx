@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import MemberProfile from "../components/MemberProfile";
-import NotFound from "../components/NotFound";
-import PageMeta from "../components/PageMeta";
+import MemberProfile from "../components/members/MemberProfile";
+import NotFound from "../components/common/NotFound";
+import PageMeta from "../components/common/PageMeta";
 import { pick, useLanguage } from "../context/LanguageContext";
 import { MEMBERS } from "../data/members";
 

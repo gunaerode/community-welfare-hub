@@ -1,5 +1,5 @@
-import { pick, pickList, useLanguage } from "../context/LanguageContext";
-import type { RuleSection } from "../types/community";
+import { pick, pickList, useLanguage } from "../../context/LanguageContext";
+import type { RuleSection } from "../../types/community";
 
 interface RulesSectionProps {
   section: RuleSection;

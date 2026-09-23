@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useLanguage } from "../context/LanguageContext";
-import type { Member } from "../types/member";
-import type { CartLine } from "../types/product";
+import { useLanguage } from "../../context/LanguageContext";
+import type { Member } from "../../types/member";
+import type { CartLine } from "../../types/product";
 import CartPanel from "./CartPanel";
 
 interface FixedCartBarProps {
@@ -31,7 +31,7 @@ export default function FixedCartBar({ member, cart, onIncrement, onDecrement, o
   const itemCount = cart.reduce((sum, line) => sum + line.quantity, 0);
 
   return (
-    <div className="sticky bottom-0 z-30 border-t border-primary-200 bg-white shadow-[0_-8px_24px_rgba(0,0,0,0.15)] dark:border-primary-700 dark:bg-primary-900">
+    <div className="sticky bottom-0 z-30 mt-2.5 rounded-2xl border border-primary-200 bg-white shadow-[0_-8px_24px_rgba(0,0,0,0.15)] dark:border-primary-700 dark:bg-primary-900">
       <button
         type="button"
         onClick={() => setExpanded((e) => !e)}

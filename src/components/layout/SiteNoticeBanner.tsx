@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { SITE_NOTICE, SITE_NOTICE_STORAGE_KEY } from "../constants/site";
-import { pick, useLanguage } from "../context/LanguageContext";
+import { SITE_NOTICE, SITE_NOTICE_STORAGE_KEY } from "../../constants/site";
+import { pick, useLanguage } from "../../context/LanguageContext";
 
 function wasDismissed(): boolean {
   if (!SITE_NOTICE.dismissible) return false;

@@ -1,6 +1,6 @@
-import { SITE } from "../constants/site";
-import { pick, useLanguage } from "../context/LanguageContext";
-import { COMMUNITY_FEATURES } from "../data/community";
+import { SITE } from "../../constants/site";
+import { pick, useLanguage } from "../../context/LanguageContext";
+import { COMMUNITY_FEATURES } from "../../data/community";
 import CommunityFeatureCard from "./CommunityFeatureCard";
 
 export default function AboutCommunity() {

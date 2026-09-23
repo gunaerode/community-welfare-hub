@@ -1,8 +1,8 @@
 import { createPortal } from "react-dom";
-import { pick, useLanguage } from "../context/LanguageContext";
-import { SITE } from "../constants/site";
-import type { CartLine } from "../types/product";
-import type { Member } from "../types/member";
+import { pick, useLanguage } from "../../context/LanguageContext";
+import { SITE } from "../../constants/site";
+import type { CartLine } from "../../types/product";
+import type { Member } from "../../types/member";
 
 interface PrintReceiptProps {
   member: Member;

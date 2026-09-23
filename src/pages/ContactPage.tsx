@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
-import PageHeader from "../components/PageHeader";
-import PageMeta from "../components/PageMeta";
+import PageHeader from "../components/common/PageHeader";
+import PageMeta from "../components/common/PageMeta";
 import { pick, useLanguage } from "../context/LanguageContext";
 import { ASSOCIATION_ADDRESS, ASSOCIATION_ADDRESS_EN, CONTACT_PEOPLE } from "../data/community";
 import { createContactQueryUrl, createWhatsAppUrl } from "../utils/whatsapp";

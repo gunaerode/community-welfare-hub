@@ -1,5 +1,5 @@
 import { createHashRouter } from "react-router-dom";
-import Layout from "../components/Layout";
+import Layout from "../components/layout/Layout";
 import ContactPage from "../pages/ContactPage";
 import HomePage from "../pages/HomePage";
 import JoinMemberPage from "../pages/JoinMemberPage";
