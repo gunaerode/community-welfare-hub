@@ -5,6 +5,7 @@ import type { Member } from "../types/member";
 import type { CartLine } from "../types/product";
 import AvatarPlaceholder from "./AvatarPlaceholder";
 import CartPanel from "./CartPanel";
+import FixedCartBar from "./FixedCartBar";
 import ProductGrid from "./ProductGrid";
 import WhatsAppCTA from "./WhatsAppCTA";
 import { createMemberEnquiryUrl, createShareMemberUrl } from "../utils/whatsapp";
@@ -55,7 +56,7 @@ export default function MemberProfile({ member }: MemberProfileProps) {
   const hasCartItems = cartLines.length > 0;
 
   return (
-    <div className={`px-4 py-10 sm:px-6 ${hasCartItems ? "pb-72 sm:pb-64" : ""}`}>
+    <div className={`px-4 py-10 sm:px-6 ${hasCartItems ? "pb-20" : ""}`}>
       <div className="mx-auto max-w-3xl">
         <Link
           to="/members"
@@ -223,17 +224,13 @@ export default function MemberProfile({ member }: MemberProfileProps) {
           </div>
 
           {hasCartItems && (
-            <div className="fixed inset-x-0 bottom-0 z-30 border-t border-primary-200 bg-white px-4 pb-4 pt-3 shadow-[0_-8px_24px_rgba(0,0,0,0.15)] dark:border-primary-700 dark:bg-primary-900 sm:px-6">
-              <div className="mx-auto max-h-[65vh] max-w-3xl overflow-y-auto">
-                <CartPanel
-                  member={member}
-                  cart={cartLines}
-                  onIncrement={handleAddOrIncrement}
-                  onDecrement={handleDecrementOrRemove}
-                  onRemove={handleRemove}
-                />
-              </div>
-            </div>
+            <FixedCartBar
+              member={member}
+              cart={cartLines}
+              onIncrement={handleAddOrIncrement}
+              onDecrement={handleDecrementOrRemove}
+              onRemove={handleRemove}
+            />
           )}
         </>
       )}

@@ -10,9 +10,15 @@ interface CartPanelProps {
   onIncrement: (productId: string) => void;
   onDecrement: (productId: string) => void;
   onRemove: (productId: string) => void;
+  /**
+   * When true, renders without its own card background/border/shadow/padding
+   * — for embedding inside another already-styled container (e.g. the
+   * collapsible fixed bottom cart bar), so it doesn't create a nested box.
+   */
+  bare?: boolean;
 }
 
-export default function CartPanel({ member, cart, onIncrement, onDecrement, onRemove }: CartPanelProps) {
+export default function CartPanel({ member, cart, onIncrement, onDecrement, onRemove, bare = false }: CartPanelProps) {
   const { lang, t } = useLanguage();
   const total = cart.reduce((sum, line) => sum + line.product.price * line.quantity, 0);
   const itemCount = cart.reduce((sum, line) => sum + line.quantity, 0);
@@ -20,7 +26,11 @@ export default function CartPanel({ member, cart, onIncrement, onDecrement, onRe
   return (
     <section
       aria-labelledby="cart-heading"
-      className="rounded-2xl border border-primary-100 bg-white p-5 shadow-sm dark:border-primary-800 dark:bg-primary-800"
+      className={
+        bare
+          ? ""
+          : "rounded-2xl border border-primary-100 bg-white p-5 shadow-sm dark:border-primary-800 dark:bg-primary-800"
+      }
     >
       <h2 id="cart-heading" className="text-base font-bold text-primary-900 dark:text-white">
         {t.cartHeading}

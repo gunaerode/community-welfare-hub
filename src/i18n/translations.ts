@@ -75,6 +75,8 @@ export interface UiStrings {
   cartEmptyMessage: string;
   cartItemsSuffix: string;
   cartTotalLabel: string;
+  expandCart: string;
+  collapseCart: string;
   sendOrderWhatsApp: string;
   printOrder: string;
   orderSummaryTitle: string;
@@ -188,6 +190,8 @@ export const UI_TEXT: Record<Language, UiStrings> = {
     cartEmptyMessage: "உங்கள் கார்ட் காலியாக உள்ளது. பொருட்களை சேர்க்கவும்.",
     cartItemsSuffix: "பொருட்கள்",
     cartTotalLabel: "மொத்தம்",
+    expandCart: "கார்ட்டை விரிவாக்கு",
+    collapseCart: "கார்ட்டை சுருக்கு",
     sendOrderWhatsApp: "🛒 WhatsApp மூலம் ஆர்டர் அனுப்ப",
     printOrder: "🖨️ ஆர்டரை பிரிண்ட் செய்ய",
     orderSummaryTitle: "ஆர்டர் விவரம்",
@@ -301,6 +305,8 @@ export const UI_TEXT: Record<Language, UiStrings> = {
     cartEmptyMessage: "Your cart is empty. Add some products.",
     cartItemsSuffix: "item(s)",
     cartTotalLabel: "Total",
+    expandCart: "Expand cart",
+    collapseCart: "Collapse cart",
     sendOrderWhatsApp: "🛒 Send Order via WhatsApp",
     printOrder: "🖨️ Print Order",
     orderSummaryTitle: "Order Summary",
