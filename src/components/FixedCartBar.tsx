@@ -13,10 +13,15 @@ interface FixedCartBarProps {
 }
 
 /**
- * Fixed bottom bar shown once the cart has items. Starts collapsed as a thin
+ * Bottom cart bar shown once the cart has items. Starts collapsed as a thin
  * summary row; clicking it expands the full CartPanel in place. The panel is
  * rendered `bare` so the expanded content shares this bar's single
  * background instead of nesting another card inside it.
+ *
+ * Uses `position: sticky` (not `fixed`) so it sticks to the bottom of the
+ * viewport while scrolling through this page's own content, but releases
+ * and scrolls away once its container's end is reached — it never floats
+ * over the site Footer, which lives outside this page's content.
  */
 export default function FixedCartBar({ member, cart, onIncrement, onDecrement, onRemove }: FixedCartBarProps) {
   const [expanded, setExpanded] = useState(false);
@@ -26,7 +31,7 @@ export default function FixedCartBar({ member, cart, onIncrement, onDecrement, o
   const itemCount = cart.reduce((sum, line) => sum + line.quantity, 0);
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-30 border-t border-primary-200 bg-white shadow-[0_-8px_24px_rgba(0,0,0,0.15)] dark:border-primary-700 dark:bg-primary-900">
+    <div className="sticky bottom-0 z-30 border-t border-primary-200 bg-white shadow-[0_-8px_24px_rgba(0,0,0,0.15)] dark:border-primary-700 dark:bg-primary-900">
       <button
         type="button"
         onClick={() => setExpanded((e) => !e)}

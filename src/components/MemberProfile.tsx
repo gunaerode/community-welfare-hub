@@ -56,7 +56,7 @@ export default function MemberProfile({ member }: MemberProfileProps) {
   const hasCartItems = cartLines.length > 0;
 
   return (
-    <div className={`px-4 py-10 sm:px-6 ${hasCartItems ? "pb-20" : ""}`}>
+    <div className="px-4 py-10 sm:px-6">
       <div className="mx-auto max-w-3xl">
         <Link
           to="/members"
