@@ -27,3 +27,15 @@ export interface RuleSection {
   body: string[];
   isFuturePlan?: boolean;
 }
+
+export interface SiteNoticeConfig {
+  /** Master on/off switch — set to false to hide the banner entirely. */
+  enabled: boolean;
+  /**
+   * When true, shows a close button and remembers the dismissal (localStorage)
+   * so it stays hidden for that visitor. When false, there is no close button
+   * and the banner always shows on every visit.
+   */
+  dismissible: boolean;
+  message: string;
+}
