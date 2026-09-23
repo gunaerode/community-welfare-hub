@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ANNOUNCEMENT_STORAGE_KEY } from "../constants/site";
+import { ANNOUNCEMENT_REAPPEAR_DAYS, ANNOUNCEMENT_STORAGE_KEY } from "../constants/site";
 import { ANNOUNCEMENT } from "../data/community";
 
+const REAPPEAR_INTERVAL_MS = ANNOUNCEMENT_REAPPEAR_DAYS * 24 * 60 * 60 * 1000;
+
 /**
- * Landing announcement shown once per browser session.
- * Content is driven entirely by `ANNOUNCEMENT` in src/data/community.ts.
+ * Landing announcement shown occasionally (once every `ANNOUNCEMENT_REAPPEAR_DAYS`
+ * days per browser), not on every page load/refresh. Content is driven entirely
+ * by `ANNOUNCEMENT` in src/data/community.ts.
  */
 export default function AnnouncementModal() {
   const [open, setOpen] = useState(false);
@@ -13,9 +16,12 @@ export default function AnnouncementModal() {
 
   useEffect(() => {
     try {
-      const alreadySeen = sessionStorage.getItem(ANNOUNCEMENT_STORAGE_KEY);
-      if (!alreadySeen) {
+      const lastShown = localStorage.getItem(ANNOUNCEMENT_STORAGE_KEY);
+      const dueToShow = !lastShown || Date.now() - Number(lastShown) > REAPPEAR_INTERVAL_MS;
+      if (dueToShow) {
         setOpen(true);
+        // Mark as shown immediately so a refresh before closing doesn't re-trigger it.
+        localStorage.setItem(ANNOUNCEMENT_STORAGE_KEY, String(Date.now()));
       }
     } catch {
       setOpen(true);
@@ -36,21 +42,11 @@ export default function AnnouncementModal() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
-  const markSeen = () => {
-    try {
-      sessionStorage.setItem(ANNOUNCEMENT_STORAGE_KEY, "true");
-    } catch {
-      /* storage unavailable — announcement will show again, which is acceptable */
-    }
-  };
-
   const handleClose = () => {
-    markSeen();
     setOpen(false);
   };
 
   const handleViewRules = () => {
-    markSeen();
     setOpen(false);
     navigate("/rules");
   };

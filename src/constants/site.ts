@@ -16,4 +16,7 @@ export const NAV_LINKS = [
   { to: "/contact", label: "Contact", icon: "📞" },
 ] as const;
 
-export const ANNOUNCEMENT_STORAGE_KEY = "cvs-announcement-seen";
+export const ANNOUNCEMENT_STORAGE_KEY = "cvs-announcement-last-shown";
+
+/** How often the landing announcement is allowed to reappear for a returning visitor. */
+export const ANNOUNCEMENT_REAPPEAR_DAYS = 7;

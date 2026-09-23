@@ -21,9 +21,11 @@ export default function Header() {
     <header className="sticky top-0 z-40 border-b border-primary-100 bg-white/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <NavLink to="/" className="flex items-center gap-2.5" onClick={() => setMenuOpen(false)}>
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-700 text-lg text-white shadow-sm">
-            🤝
-          </span>
+          <img
+            src={`${import.meta.env.BASE_URL}logo.png`}
+            alt={`${SITE.nameTamil} logo`}
+            className="h-10 w-10 shrink-0 rounded-full object-cover shadow-sm"
+          />
           <span className="leading-tight">
             <span className="block text-sm font-bold text-primary-800 sm:text-base">
               {SITE.nameTamil}
