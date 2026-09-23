@@ -1,5 +1,9 @@
+import { useState } from "react";
 import { pick, pickList, useLanguage } from "../context/LanguageContext";
 import type { Member } from "../types/member";
+import type { CartLine } from "../types/product";
+import CartPanel from "./CartPanel";
+import ProductGrid from "./ProductGrid";
 import WhatsAppCTA from "./WhatsAppCTA";
 import { createMemberEnquiryUrl, createShareMemberUrl } from "../utils/whatsapp";
 
@@ -15,6 +19,36 @@ export default function MemberProfile({ member }: MemberProfileProps) {
   const location = pick(lang, member.location ?? "", member.locationEn);
   const description = pick(lang, member.description ?? "", member.descriptionEn);
   const services = member.services ? pickList(lang, member.services, member.servicesEn) : [];
+
+  const [quantities, setQuantities] = useState<Record<string, number>>({});
+
+  const handleAddOrIncrement = (productId: string) => {
+    setQuantities((q) => ({ ...q, [productId]: (q[productId] ?? 0) + 1 }));
+  };
+
+  const handleDecrementOrRemove = (productId: string) => {
+    setQuantities((q) => {
+      const current = q[productId] ?? 0;
+      if (current <= 1) {
+        const next = { ...q };
+        delete next[productId];
+        return next;
+      }
+      return { ...q, [productId]: current - 1 };
+    });
+  };
+
+  const handleRemove = (productId: string) => {
+    setQuantities((q) => {
+      const next = { ...q };
+      delete next[productId];
+      return next;
+    });
+  };
+
+  const cartLines: CartLine[] = (member.products ?? [])
+    .filter((product) => (quantities[product.id] ?? 0) > 0)
+    .map((product) => ({ product, quantity: quantities[product.id] }));
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
@@ -141,6 +175,39 @@ export default function MemberProfile({ member }: MemberProfileProps) {
           </div>
         </div>
       </div>
+
+      {member.products && member.products.length > 0 && (
+        <div className="mt-6 flex flex-col gap-6">
+          <section
+            aria-labelledby="products-heading"
+            className="rounded-2xl border border-primary-100 bg-white p-6 shadow-sm dark:border-primary-800 dark:bg-primary-800"
+          >
+            <h2
+              id="products-heading"
+              className="text-sm font-bold uppercase tracking-wide text-primary-500 dark:text-primary-400"
+            >
+              {t.productsHeading}
+            </h2>
+            <div className="mt-3">
+              <ProductGrid
+                products={member.products}
+                quantities={quantities}
+                onAdd={handleAddOrIncrement}
+                onIncrement={handleAddOrIncrement}
+                onDecrement={handleDecrementOrRemove}
+              />
+            </div>
+          </section>
+
+          <CartPanel
+            member={member}
+            cart={cartLines}
+            onIncrement={handleAddOrIncrement}
+            onDecrement={handleDecrementOrRemove}
+            onRemove={handleRemove}
+          />
+        </div>
+      )}
     </article>
   );
 }

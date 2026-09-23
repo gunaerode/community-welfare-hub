@@ -7,7 +7,7 @@ import WhatsAppButton from "./WhatsAppButton";
 
 export default function Layout() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col print:hidden">
       <SiteNoticeBanner />
       <Header />
       <main className="flex-1">

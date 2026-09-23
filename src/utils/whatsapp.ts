@@ -1,6 +1,7 @@
 import { GENERAL_WHATSAPP_NUMBER, SITE } from "../constants/site";
 import { pick, type Language } from "../context/LanguageContext";
 import type { Member } from "../types/member";
+import type { CartLine } from "../types/product";
 
 /**
  * Build a wa.me deep link that opens WhatsApp with a pre-filled message.
@@ -61,4 +62,38 @@ export function createShareMemberUrl(member: Member, profileUrl: string, lang: L
   ].filter((line): line is string => line !== null);
 
   return createWhatsAppUrl(undefined, lines.join("\n"));
+}
+
+/** Order enquiry link pre-filled with a member's cart contents (name, qty, line total, grand total). */
+export function createCartOrderUrl(member: Member, cart: CartLine[], lang: Language = "ta"): string {
+  const associationName = pick(lang, SITE.nameTamil, SITE.nameEnglish);
+  const businessName = member.businessName ?? member.name;
+  const total = cart.reduce((sum, line) => sum + line.product.price * line.quantity, 0);
+
+  const itemLines = cart.map((line, index) => {
+    const name = pick(lang, line.product.name, line.product.nameEn);
+    const lineTotal = line.product.price * line.quantity;
+    return `${index + 1}. ${name} x${line.quantity} - ₹${lineTotal}`;
+  });
+
+  const heading = lang === "en" ? `Order from ${businessName}` : `${businessName} - ஆர்டர்`;
+  const totalLabel = lang === "en" ? "Total" : "மொத்தம்";
+  const greeting =
+    lang === "en"
+      ? `Hello ${member.name},\n\nI'd like to place the following order:`
+      : `வணக்கம் ${member.name},\n\nநான் பின்வரும் பொருட்களை ஆர்டர் செய்ய விரும்புகிறேன்:`;
+
+  const lines = [
+    `*${heading}*`,
+    "",
+    greeting,
+    "",
+    ...itemLines,
+    "",
+    `*${totalLabel}: ₹${total}*`,
+    "",
+    `- ${associationName}`,
+  ];
+
+  return createWhatsAppUrl(member.phone ?? GENERAL_WHATSAPP_NUMBER, lines.join("\n"));
 }

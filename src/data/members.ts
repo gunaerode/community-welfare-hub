@@ -1,4 +1,79 @@
 import type { Member } from "../types/member";
+import type { Product } from "../types/product";
+
+/**
+ * Product catalogs for members who sell physical goods. Only assigned to
+ * members whose `products` array should enable the "Add to Cart" experience
+ * on their profile page — most members omit this entirely.
+ */
+const VIJAY_MOBILE_PRODUCTS: Product[] = [
+  {
+    id: "screen-guard",
+    name: "டெம்பர்டு கிளாஸ் ஸ்கிரீன் கார்டு",
+    nameEn: "Tempered Glass Screen Guard",
+    price: 149,
+    image: "https://picsum.photos/seed/vijay-screenguard/400/400",
+    description: "அனைத்து மொபைல் மாடல்களுக்கும் பொருந்தும் High quality screen protector.",
+    descriptionEn: "High-quality screen protector, fits all popular mobile models.",
+  },
+  {
+    id: "phone-cover",
+    name: "மொபைல் கவர்",
+    nameEn: "Mobile Back Cover",
+    price: 249,
+    image: "https://picsum.photos/seed/vijay-cover/400/400",
+    description: "Shock-proof silicone back cover, பல வண்ணங்களில்.",
+    descriptionEn: "Shock-proof silicone back cover, available in multiple colors.",
+  },
+  {
+    id: "charger",
+    name: "ஃபாஸ்ட் சார்ஜர் (Type-C)",
+    nameEn: "Fast Charger (Type-C)",
+    price: 399,
+    image: "https://picsum.photos/seed/vijay-charger/400/400",
+    description: "18W Fast charging adapter with 1m cable.",
+    descriptionEn: "18W fast-charging adapter with 1m cable.",
+  },
+  {
+    id: "earphones",
+    name: "இயர்போன்ஸ்",
+    nameEn: "Wired Earphones",
+    price: 199,
+    image: "https://picsum.photos/seed/vijay-earphones/400/400",
+    description: "Clear sound quality-உடன் கூடிய wired earphones.",
+    descriptionEn: "Wired earphones with clear sound quality.",
+  },
+];
+
+const KAVITHA_BOUTIQUE_PRODUCTS: Product[] = [
+  {
+    id: "cotton-saree",
+    name: "காட்டன் சேலை",
+    nameEn: "Cotton Saree",
+    price: 899,
+    image: "https://picsum.photos/seed/kavitha-saree/400/400",
+    description: "தினசரி பயன்பாட்டிற்கு ஏற்ற வண்ணமயமான காட்டன் சேலை.",
+    descriptionEn: "Colorful cotton saree, great for everyday wear.",
+  },
+  {
+    id: "kids-frock",
+    name: "குழந்தைகள் ஃப்ராக்",
+    nameEn: "Kids Frock",
+    price: 449,
+    image: "https://picsum.photos/seed/kavitha-frock/400/400",
+    description: "பிறந்தநாள் மற்றும் விழாக்களுக்கு ஏற்ற குழந்தைகள் ஆடை.",
+    descriptionEn: "Festive-wear frock for kids, perfect for birthdays and celebrations.",
+  },
+  {
+    id: "imitation-necklace",
+    name: "இமிடேஷன் நெக்லஸ் செட்",
+    nameEn: "Imitation Necklace Set",
+    price: 599,
+    image: "https://picsum.photos/seed/kavitha-necklace/400/400",
+    description: "திருமண மற்றும் விசேஷ நிகழ்வுகளுக்கு ஏற்ற நகை செட்.",
+    descriptionEn: "Jewellery set suited for weddings and special occasions.",
+  },
+];
 
 /**
  * Sample member/business directory data.
@@ -88,6 +163,7 @@ export const MEMBERS: Member[] = [
     descriptionEn: "Mobile phone sales, repair work, and recharge / bill payment services.",
     services: ["Mobile Sales", "Screen Repair", "Recharge & Bill Payment", "Accessories"],
     servicesEn: ["Mobile Sales", "Screen Repair", "Recharge & Bill Payment", "Accessories"],
+    products: VIJAY_MOBILE_PRODUCTS,
   },
   {
     id: "kavitha-boutique",
@@ -103,6 +179,7 @@ export const MEMBERS: Member[] = [
     services: ["Readymade Garments", "Kids Wear", "Imitation Jewellery", "Festive Collections"],
     servicesEn: ["Readymade Garments", "Kids Wear", "Imitation Jewellery", "Festive Collections"],
     businessImages: ["https://picsum.photos/seed/kavitha1/600/400"],
+    products: KAVITHA_BOUTIQUE_PRODUCTS,
   },
   {
     id: "murugan-transport",

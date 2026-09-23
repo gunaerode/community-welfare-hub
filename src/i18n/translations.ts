@@ -60,6 +60,20 @@ export interface UiStrings {
 
   floatingWhatsAppLabel: string;
   closeNotice: string;
+
+  productsHeading: string;
+  addToCart: string;
+  increaseQuantity: string;
+  decreaseQuantity: string;
+  removeFromCart: string;
+  cartHeading: string;
+  cartEmptyMessage: string;
+  cartItemsSuffix: string;
+  cartTotalLabel: string;
+  sendOrderWhatsApp: string;
+  printOrder: string;
+  orderSummaryTitle: string;
+  orderDateLabel: string;
 }
 
 export const UI_TEXT: Record<Language, UiStrings> = {
@@ -124,6 +138,20 @@ export const UI_TEXT: Record<Language, UiStrings> = {
 
     floatingWhatsAppLabel: "WhatsApp மூலம் தொடர்பு கொள்ள",
     closeNotice: "அறிவிப்பை மூடு",
+
+    productsHeading: "பொருட்கள்",
+    addToCart: "🛒 கார்ட்டில் சேர்",
+    increaseQuantity: "அளவை அதிகரி",
+    decreaseQuantity: "அளவை குறை",
+    removeFromCart: "நீக்கு",
+    cartHeading: "🛒 உங்கள் கார்ட்",
+    cartEmptyMessage: "உங்கள் கார்ட் காலியாக உள்ளது. பொருட்களை சேர்க்கவும்.",
+    cartItemsSuffix: "பொருட்கள்",
+    cartTotalLabel: "மொத்தம்",
+    sendOrderWhatsApp: "🛒 WhatsApp மூலம் ஆர்டர் அனுப்ப",
+    printOrder: "🖨️ ஆர்டரை பிரிண்ட் செய்ய",
+    orderSummaryTitle: "ஆர்டர் விவரம்",
+    orderDateLabel: "தேதி",
   },
   en: {
     navHome: "Home",
@@ -186,5 +214,19 @@ export const UI_TEXT: Record<Language, UiStrings> = {
 
     floatingWhatsAppLabel: "Contact via WhatsApp",
     closeNotice: "Dismiss notice",
+
+    productsHeading: "Products",
+    addToCart: "🛒 Add to Cart",
+    increaseQuantity: "Increase quantity",
+    decreaseQuantity: "Decrease quantity",
+    removeFromCart: "Remove",
+    cartHeading: "🛒 Your Cart",
+    cartEmptyMessage: "Your cart is empty. Add some products.",
+    cartItemsSuffix: "item(s)",
+    cartTotalLabel: "Total",
+    sendOrderWhatsApp: "🛒 Send Order via WhatsApp",
+    printOrder: "🖨️ Print Order",
+    orderSummaryTitle: "Order Summary",
+    orderDateLabel: "Date",
   },
 };
