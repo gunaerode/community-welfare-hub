@@ -1,24 +1,23 @@
 import { useLanguage } from "../../context/LanguageContext";
 
+/** Segmented தமிழ் / EN switch. */
 export default function LanguageToggle() {
   const { lang, toggleLang } = useLanguage();
+
+  const segment = (active: boolean) =>
+    `rounded-full px-2.5 py-1 transition-colors ${
+      active ? "bg-primary-700 text-white shadow-sm dark:bg-accent-500 dark:text-primary-950" : "text-primary-500 dark:text-primary-300"
+    }`;
 
   return (
     <button
       type="button"
       onClick={toggleLang}
       aria-label={lang === "ta" ? "Switch to English" : "தமிழுக்கு மாற்று"}
-      className="flex h-9 shrink-0 items-center gap-1 rounded-full border border-primary-200 px-3 text-xs font-bold text-primary-700 transition-colors hover:bg-primary-50 dark:border-primary-700 dark:text-primary-100 dark:hover:bg-primary-800"
+      className="flex h-10 shrink-0 items-center gap-0.5 rounded-full border border-primary-200 bg-white/60 p-1 text-xs font-bold transition-colors hover:border-primary-300 dark:border-primary-700 dark:bg-primary-900/60"
     >
-      <span className={lang === "ta" ? "text-primary-900 dark:text-white" : "text-primary-400 dark:text-primary-500"}>
-        தமிழ்
-      </span>
-      <span aria-hidden="true" className="text-primary-300 dark:text-primary-600">
-        |
-      </span>
-      <span className={lang === "en" ? "text-primary-900 dark:text-white" : "text-primary-400 dark:text-primary-500"}>
-        EN
-      </span>
+      <span className={segment(lang === "ta")}>தமிழ்</span>
+      <span className={segment(lang === "en")}>EN</span>
     </button>
   );
 }

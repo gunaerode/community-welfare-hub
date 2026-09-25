@@ -3,6 +3,7 @@ import type { Member } from "../../types/member";
 import type { CartLine } from "../../types/product";
 import { createCartOrderUrl } from "../../utils/whatsapp";
 import PrintReceipt from "./PrintReceipt";
+import Icon, { WhatsAppGlyph } from "../common/Icon";
 
 interface CartPanelProps {
   member: Member;
@@ -29,10 +30,11 @@ export default function CartPanel({ member, cart, onIncrement, onDecrement, onRe
       className={
         bare
           ? ""
-          : "rounded-2xl border border-primary-100 bg-white p-5 shadow-sm dark:border-primary-800 dark:bg-primary-800"
+          : "card p-5"
       }
     >
-      <h2 id="cart-heading" className="text-base font-bold text-primary-900 dark:text-white">
+      <h2 id="cart-heading" className="flex items-center gap-2 text-base font-bold text-primary-900 dark:text-white">
+        <Icon name="cart" className="h-5 w-5 text-accent-600" />
         {t.cartHeading}
         {itemCount > 0 && (
           <span className="ml-2 text-sm font-medium text-primary-500 dark:text-primary-400">
@@ -80,7 +82,7 @@ export default function CartPanel({ member, cart, onIncrement, onDecrement, onRe
                             aria-label={t.decreaseQuantity}
                             className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-primary-700 hover:bg-primary-50 dark:text-primary-100 dark:hover:bg-primary-700"
                           >
-                            −
+                            <Icon name="minus" className="h-3.5 w-3.5" />
                           </button>
                           <span className="w-5 text-center font-bold text-primary-900 dark:text-white">
                             {line.quantity}
@@ -91,7 +93,7 @@ export default function CartPanel({ member, cart, onIncrement, onDecrement, onRe
                             aria-label={t.increaseQuantity}
                             className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-primary-700 hover:bg-primary-50 dark:text-primary-100 dark:hover:bg-primary-700"
                           >
-                            +
+                            <Icon name="plus" className="h-3.5 w-3.5" />
                           </button>
                         </div>
                       </td>
@@ -105,7 +107,7 @@ export default function CartPanel({ member, cart, onIncrement, onDecrement, onRe
                           aria-label={t.removeFromCart}
                           className="flex h-7 w-7 items-center justify-center rounded-full text-primary-400 hover:bg-red-50 hover:text-red-600 dark:text-primary-500 dark:hover:bg-red-950/40 dark:hover:text-red-400"
                         >
-                          🗑
+                          <Icon name="trash" className="h-4 w-4" />
                         </button>
                       </td>
                     </tr>
@@ -125,15 +127,17 @@ export default function CartPanel({ member, cart, onIncrement, onDecrement, onRe
               href={createCartOrderUrl(member, cart, lang)}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-bold text-white transition-transform hover:scale-[1.02]"
+              className="btn-whatsapp"
             >
+              <WhatsAppGlyph />
               {t.sendOrderWhatsApp}
             </a>
             <button
               type="button"
               onClick={() => window.print()}
-              className="flex items-center justify-center gap-2 rounded-full border-2 border-primary-700 px-5 py-2.5 text-sm font-bold text-primary-700 transition-colors hover:bg-primary-50 dark:text-primary-200 dark:hover:bg-primary-700"
+              className="btn-outline"
             >
+              <Icon name="printer" />
               {t.printOrder}
             </button>
           </div>

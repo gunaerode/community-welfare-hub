@@ -49,3 +49,11 @@ export interface SiteNoticeConfig {
   message: string;
   messageEn?: string;
 }
+
+export interface FaqItem {
+  id: string;
+  question: string;
+  questionEn: string;
+  answer: string;
+  answerEn: string;
+}

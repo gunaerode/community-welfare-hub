@@ -3,6 +3,7 @@ import { useLanguage } from "../../context/LanguageContext";
 import type { Member } from "../../types/member";
 import type { CartLine } from "../../types/product";
 import CartPanel from "./CartPanel";
+import Icon from "../common/Icon";
 
 interface FixedCartBarProps {
   member: Member;
@@ -31,7 +32,7 @@ export default function FixedCartBar({ member, cart, onIncrement, onDecrement, o
   const itemCount = cart.reduce((sum, line) => sum + line.quantity, 0);
 
   return (
-    <div className="sticky bottom-0 z-30 mt-2.5 rounded-2xl border border-primary-200 bg-white shadow-[0_-8px_24px_rgba(0,0,0,0.15)] dark:border-primary-700 dark:bg-primary-900">
+    <div className="sticky bottom-0 z-30 mt-2.5 rounded-2xl border border-primary-200 bg-white/95 shadow-[0_-8px_24px_rgba(0,0,0,0.15)] backdrop-blur dark:border-primary-700 dark:bg-primary-900/95">
       <button
         type="button"
         onClick={() => setExpanded((e) => !e)}
@@ -40,7 +41,9 @@ export default function FixedCartBar({ member, cart, onIncrement, onDecrement, o
         className="flex w-full items-center justify-between px-4 py-3 sm:px-6"
       >
         <span className="flex items-center gap-2 text-sm font-bold text-primary-900 dark:text-white">
-          <span aria-hidden="true">🛒</span>
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent-500 text-primary-950">
+            <Icon name="cart" className="h-4 w-4" />
+          </span>
           {itemCount} {t.cartItemsSuffix}
           <span className="text-primary-300 dark:text-primary-600">•</span>
           <span className="text-primary-700 dark:text-accent-400">₹{total}</span>

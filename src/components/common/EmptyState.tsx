@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import SearchIllustration from "./SearchIllustration";
 
 interface EmptyStateProps {
@@ -6,12 +7,12 @@ interface EmptyStateProps {
   illustration?: boolean;
   title: string;
   message?: string;
-  action?: React.ReactNode;
+  action?: ReactNode;
 }
 
 export default function EmptyState({ icon = "🔍", illustration = false, title, message, action }: EmptyStateProps) {
   return (
-    <div className="flex flex-col items-center gap-3 rounded-2xl border border-dashed border-primary-200 bg-primary-50/50 px-6 py-14 text-center dark:border-primary-700 dark:bg-primary-800/50">
+    <div className="flex flex-col items-center gap-3 rounded-3xl border-2 border-dashed border-primary-200 bg-white/60 px-6 py-14 text-center dark:border-primary-800 dark:bg-primary-900/40">
       {illustration ? (
         <SearchIllustration className="h-32 w-32" />
       ) : (

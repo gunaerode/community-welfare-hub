@@ -2,50 +2,85 @@ import { Link } from "react-router-dom";
 import { SITE } from "../../constants/site";
 import { pick, useLanguage } from "../../context/LanguageContext";
 import { createGeneralWhatsAppUrl } from "../../utils/whatsapp";
+import Icon, { WhatsAppGlyph } from "../common/Icon";
 
 export default function HeroSection() {
   const { lang, t } = useLanguage();
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-primary-50 via-white to-white dark:from-primary-900 dark:via-primary-900 dark:to-primary-900">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 py-16 text-center sm:px-6 sm:py-20">
-        <span className="rounded-full bg-accent-100 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-accent-700 dark:bg-accent-900 dark:text-accent-200">
-          {SITE.nameEnglish}
-        </span>
+    <section className="relative overflow-hidden bg-gradient-to-b from-primary-50 via-white to-[#f7faf8] dark:from-primary-900 dark:via-primary-950 dark:to-primary-950">
+      <div className="bg-dots absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" aria-hidden="true" />
+      <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-primary-200/50 blur-3xl dark:bg-primary-700/30" aria-hidden="true" />
+      <div className="absolute top-20 -right-24 h-80 w-80 rounded-full bg-accent-200/60 blur-3xl dark:bg-accent-700/20" aria-hidden="true" />
 
-        <h1 className="max-w-3xl text-3xl font-extrabold leading-tight text-primary-900 dark:text-white sm:text-4xl md:text-5xl">
-          {SITE.nameTamil}
-        </h1>
+      <div className="relative container-page grid items-center gap-10 pt-10 pb-24 sm:pt-16 lg:grid-cols-[1.25fr_1fr] lg:pb-28">
+        <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+          <span className="eyebrow">
+            <Icon name="sparkles" className="h-3.5 w-3.5" />
+            {t.heroTrustLine}
+          </span>
 
-        <p className="text-lg font-semibold text-accent-600 dark:text-accent-400 sm:text-xl">
-          {pick(lang, SITE.tagline, SITE.taglineEn)}
-        </p>
+          <h1 className="mt-5 text-3xl leading-tight font-extrabold tracking-tight text-primary-950 sm:text-4xl lg:text-5xl dark:text-white">
+            {SITE.nameTamil}
+          </h1>
 
-        <p className="max-w-2xl text-base leading-relaxed text-primary-700 dark:text-primary-200 sm:text-lg">
-          {pick(lang, SITE.description, SITE.descriptionEn)}
-        </p>
+          <p className="mt-4 bg-gradient-to-r from-accent-600 to-accent-500 bg-clip-text text-lg font-bold text-transparent sm:text-xl dark:from-accent-300 dark:to-accent-500">
+            {pick(lang, SITE.tagline, SITE.taglineEn)}
+          </p>
 
-        <div className="mt-2 flex flex-col gap-3 sm:flex-row">
-          <Link
-            to="/members"
-            className="rounded-full bg-primary-700 px-6 py-3 text-sm font-bold text-white shadow-md shadow-primary-700/20 transition-transform hover:scale-[1.02] hover:bg-primary-600 sm:text-base"
-          >
-            {t.heroCtaMembers}
-          </Link>
-          <Link
-            to="/rules"
-            className="rounded-full border-2 border-primary-700 px-6 py-3 text-sm font-bold text-primary-700 transition-colors hover:bg-primary-50 dark:text-primary-200 dark:hover:bg-primary-800 sm:text-base"
-          >
-            {t.heroCtaRules}
-          </Link>
-          <a
-            href={createGeneralWhatsAppUrl(lang)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full bg-[#25D366] px-6 py-3 text-sm font-bold text-white shadow-md shadow-[#25D366]/25 transition-transform hover:scale-[1.02] sm:text-base"
-          >
-            {t.heroCtaWhatsApp}
-          </a>
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-primary-700 sm:text-lg dark:text-primary-200">
+            {pick(lang, SITE.description, SITE.descriptionEn)}
+          </p>
+
+          <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start">
+            <Link to="/members" className="btn-primary py-3">
+              <Icon name="users" className="h-5 w-5" />
+              {t.heroCtaMembers}
+            </Link>
+            <a href={createGeneralWhatsAppUrl(lang)} target="_blank" rel="noopener noreferrer" className="btn-whatsapp py-3">
+              <WhatsAppGlyph />
+              {t.heroCtaWhatsApp}
+            </a>
+            <Link to="/rules" className="btn-ghost py-3">
+              {t.heroCtaRules}
+              <Icon name="arrowRight" className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+
+        <div className="relative mx-auto hidden w-full max-w-sm sm:block">
+          <div className="absolute inset-6 rounded-full bg-gradient-to-br from-primary-600 to-primary-900 opacity-10 blur-2xl" aria-hidden="true" />
+          <div className="relative aspect-square rounded-full border border-primary-100 bg-white/70 p-6 shadow-lift backdrop-blur dark:border-primary-800 dark:bg-primary-900/60">
+            <div className="h-full w-full rounded-full border-2 border-dashed border-accent-300/70 p-4 dark:border-accent-700/60">
+              <img
+                src={`${import.meta.env.BASE_URL}logo.png`}
+                alt={`${SITE.nameTamil} logo`}
+                width={512}
+                height={512}
+                className="h-full w-full rounded-full object-cover shadow-md"
+              />
+            </div>
+          </div>
+
+          <div className="absolute top-8 -left-6 flex items-center gap-2.5 rounded-2xl bg-white px-3.5 py-2.5 shadow-lift animate-float motion-reduce:animate-none dark:bg-primary-800">
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary-100 text-primary-700 dark:bg-primary-700 dark:text-accent-300">
+              <Icon name="calendar" className="h-5 w-5" />
+            </span>
+            <span className="text-left leading-tight">
+              <span className="block text-sm font-extrabold text-primary-900 dark:text-white">₹500</span>
+              <span className="block text-[11px] text-primary-500 dark:text-primary-300">{t.heroStatMonthly}</span>
+            </span>
+          </div>
+
+          <div className="absolute -right-4 bottom-10 flex items-center gap-2.5 rounded-2xl bg-white px-3.5 py-2.5 shadow-lift animate-float [animation-delay:1.5s] motion-reduce:animate-none dark:bg-primary-800">
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent-100 text-accent-700 dark:bg-accent-900/60 dark:text-accent-300">
+              <Icon name="heartHand" className="h-5 w-5" />
+            </span>
+            <span className="text-left leading-tight">
+              <span className="block text-sm font-extrabold text-primary-900 dark:text-white">₹5000</span>
+              <span className="block text-[11px] text-primary-500 dark:text-primary-300">{t.heroStatMaxHelp}</span>
+            </span>
+          </div>
         </div>
       </div>
     </section>

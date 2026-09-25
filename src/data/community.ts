@@ -2,6 +2,7 @@ import type {
   AnnouncementContent,
   CommunityFeature,
   ContactPerson,
+  FaqItem,
   RuleSection,
 } from "../types/community";
 
@@ -208,3 +209,35 @@ export const CONTACT_PEOPLE: ContactPerson[] = [
 
 export const ASSOCIATION_ADDRESS = "அந்தியூர், ஈரோடு மாவட்டம், தமிழ்நாடு";
 export const ASSOCIATION_ADDRESS_EN = "Anthiyur, Erode District, Tamil Nadu";
+
+/** Shown on the Contact page. Edit freely — each item has Tamil + English text. */
+export const FAQS: FaqItem[] = [
+  {
+    id: "join",
+    question: "சங்கத்தில் எப்படி சேருவது?",
+    questionEn: "How do I join the association?",
+    answer: "நிர்வாகியை WhatsApp மூலம் தொடர்பு கொள்ளுங்கள். உறுப்பினர் பதிவு மற்றும் மாதாந்திர சந்தா விவரங்களை அவர் தெரிவிப்பார்.",
+    answerEn: "Message the admin on WhatsApp. They'll share the registration steps and monthly contribution details.",
+  },
+  {
+    id: "contribution",
+    question: "மாதாந்திர சந்தா எவ்வளவு, எப்போது?",
+    questionEn: "How much is the monthly contribution, and when?",
+    answer: "மாதம் ₹500. ஒவ்வொரு மாதமும் முதல் ஞாயிற்றுக்கிழமை வசூலிக்கப்படும்.",
+    answerEn: "₹500 per month, collected on the first Sunday of every month.",
+  },
+  {
+    id: "assistance",
+    question: "எவ்வளவு உதவி பெறலாம்?",
+    questionEn: "How much assistance can I get?",
+    answer: "நீங்கள் செலுத்திய தொகையின் 2 மடங்கு வரை, அதிகபட்சம் ₹5000. விதிமுறைகள் பக்கத்தில் உள்ள கணிப்பானைப் பயன்படுத்தலாம்.",
+    answerEn: "Up to 2× what you've contributed, with a maximum of ₹5000. Try the calculator on the Rules page.",
+  },
+  {
+    id: "listing",
+    question: "என் தொழிலை Directory-ல் எப்படி சேர்ப்பது?",
+    questionEn: "How do I list my business in the directory?",
+    answer: "\"எனது விவரங்களை சேர்\" படிவத்தை நிரப்புங்கள். நிர்வாகி சரிபார்த்த பின் உங்கள் விவரங்கள் சேர்க்கப்படும்.",
+    answerEn: "Fill in the \"Add My Details\" form. Your listing is added once an admin reviews it.",
+  },
+];

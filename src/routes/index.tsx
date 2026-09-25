@@ -1,5 +1,6 @@
 import { createHashRouter } from "react-router-dom";
 import Layout from "../components/layout/Layout";
+import AdminPage from "../pages/AdminPage";
 import ContactPage from "../pages/ContactPage";
 import HomePage from "../pages/HomePage";
 import JoinMemberPage from "../pages/JoinMemberPage";
@@ -22,6 +23,7 @@ export const router = createHashRouter([
       { path: "/members/:memberId", element: <MemberProfilePage /> },
       { path: "/rules", element: <RulesPage /> },
       { path: "/contact", element: <ContactPage /> },
+      { path: "/admin", element: <AdminPage /> },
       { path: "*", element: <NotFoundPage /> },
     ],
   },

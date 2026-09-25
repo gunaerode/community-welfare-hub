@@ -1,0 +1,16 @@
+{
+  "name": "community-welfare-hub-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Optional API server for community-welfare-hub (join requests, contact inbox, live announcements, member directory).",
+  "type": "module",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "node --test"
+  }
+}

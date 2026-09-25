@@ -1,7 +1,8 @@
 import { useLanguage } from "../../context/LanguageContext";
+import Icon from "../common/Icon";
 
 interface MemberFiltersProps {
-  categories: string[];
+  categories: { value: string; count: number }[];
   locations: string[];
   selectedCategory: string;
   selectedLocation: string;
@@ -12,6 +13,7 @@ interface MemberFiltersProps {
 /** Language-neutral sentinel for the "all" option — display labels are translated separately. */
 const ALL_VALUE = "__all__";
 
+/** Category chips (horizontally scrollable on phones) + a location dropdown. */
 export default function MemberFilters({
   categories,
   locations,
@@ -21,37 +23,50 @@ export default function MemberFilters({
   onLocationChange,
 }: MemberFiltersProps) {
   const { t } = useLanguage();
+  const total = categories.reduce((sum, c) => sum + c.count, 0);
+
+  const chip = (active: boolean) =>
+    `inline-flex shrink-0 items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-semibold whitespace-nowrap transition-colors ${
+      active
+        ? "border-primary-700 bg-primary-700 text-white shadow-sm"
+        : "border-primary-200 bg-white text-primary-700 hover:border-primary-400 dark:border-primary-700 dark:bg-primary-900 dark:text-primary-100"
+    }`;
 
   return (
-    <div className="flex flex-col gap-3 sm:flex-row">
-      <div className="flex-1">
-        <label htmlFor="category-filter" className="sr-only">
-          {t.allCategories}
-        </label>
-        <select
-          id="category-filter"
-          value={selectedCategory}
-          onChange={(event) => onCategoryChange(event.target.value)}
-          className="w-full rounded-full border border-primary-200 bg-white px-4 py-2.5 text-sm text-primary-900 focus:border-primary-400 focus:outline-none dark:border-primary-700 dark:bg-primary-800 dark:text-white"
-        >
-          <option value={ALL_VALUE}>{t.allCategories}</option>
-          {categories.map((category) => (
-            <option key={category} value={category}>
-              {category}
-            </option>
-          ))}
-        </select>
+    <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
+      <div
+        role="group"
+        aria-label={t.allCategories}
+        className="no-scrollbar -mx-4 flex flex-1 gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:px-0"
+      >
+        <button type="button" className={chip(selectedCategory === ALL_VALUE)} aria-pressed={selectedCategory === ALL_VALUE} onClick={() => onCategoryChange(ALL_VALUE)}>
+          {t.categoryAll}
+          <span className="rounded-full bg-black/10 px-1.5 text-xs dark:bg-white/10">{total}</span>
+        </button>
+        {categories.map(({ value, count }) => (
+          <button
+            key={value}
+            type="button"
+            className={chip(selectedCategory === value)}
+            aria-pressed={selectedCategory === value}
+            onClick={() => onCategoryChange(selectedCategory === value ? ALL_VALUE : value)}
+          >
+            {value}
+            <span className="rounded-full bg-black/10 px-1.5 text-xs dark:bg-white/10">{count}</span>
+          </button>
+        ))}
       </div>
 
-      <div className="flex-1">
+      <div className="relative lg:w-60">
         <label htmlFor="location-filter" className="sr-only">
           {t.allLocations}
         </label>
+        <Icon name="mapPin" className="pointer-events-none absolute top-1/2 left-4 h-4 w-4 -translate-y-1/2 text-primary-400" />
         <select
           id="location-filter"
           value={selectedLocation}
           onChange={(event) => onLocationChange(event.target.value)}
-          className="w-full rounded-full border border-primary-200 bg-white px-4 py-2.5 text-sm text-primary-900 focus:border-primary-400 focus:outline-none dark:border-primary-700 dark:bg-primary-800 dark:text-white"
+          className="field-input appearance-none rounded-full py-2.5 pr-10 pl-10"
         >
           <option value={ALL_VALUE}>{t.allLocations}</option>
           {locations.map((location) => (
@@ -60,6 +75,7 @@ export default function MemberFilters({
             </option>
           ))}
         </select>
+        <Icon name="chevronDown" className="pointer-events-none absolute top-1/2 right-4 h-4 w-4 -translate-y-1/2 text-primary-400" />
       </div>
     </div>
   );

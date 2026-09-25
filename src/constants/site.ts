@@ -1,5 +1,6 @@
 import type { SiteNoticeConfig } from "../types/community";
 import type { UiStrings } from "../i18n/translations";
+import type { IconName } from "../components/common/Icon";
 
 export const SITE = {
   nameTamil: "சின்ன வீர சங்கிலி உறவினர் நல சங்கம்",
@@ -20,11 +21,11 @@ export const SITE = {
 export const GENERAL_WHATSAPP_NUMBER = "918883702745";
 
 export const NAV_LINKS = [
-  { to: "/", icon: "🏠" },
-  { to: "/members", icon: "👨‍👩‍👧‍👦" },
-  { to: "/rules", icon: "📜" },
-  { to: "/contact", icon: "📞" },
-] as const;
+  { to: "/", icon: "home" },
+  { to: "/members", icon: "users" },
+  { to: "/rules", icon: "scroll" },
+  { to: "/contact", icon: "phone" },
+] as const satisfies readonly { to: string; icon: IconName }[];
 
 /** Looks up the localized label for a NAV_LINKS entry, e.g. `getNavLabel(t, "/members")`. */
 export function getNavLabel(t: UiStrings, to: (typeof NAV_LINKS)[number]["to"]): string {
@@ -55,8 +56,8 @@ export const ANNOUNCEMENT_REAPPEAR_DAYS = 7;
 export const SITE_NOTICE: SiteNoticeConfig = {
   enabled: true,
   dismissible: true,
-  message: "⚠️ இந்த வலைத்தளம் தற்போது உருவாக்கப்பட்டு வருகிறது — சில தகவல்கள் மாறலாம்.",
-  messageEn: "⚠️ This website is currently under development — some information may change.",
+  message: "இந்த வலைத்தளம் தற்போது உருவாக்கப்பட்டு வருகிறது — சில தகவல்கள் மாறலாம்.",
+  messageEn: "This website is currently under development — some information may change.",
 };
 
 export const SITE_NOTICE_STORAGE_KEY = "cvs-site-notice-dismissed";
